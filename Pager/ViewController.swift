@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController, ChartPageViewControllerDataSource {
+class ViewController: UIViewController, ChartPagingViewControllerDataSource {
 
-    var pageViewController: ChartPageViewController = ChartPageViewController.controller()
+    var pageViewController: ChartPagingViewController = ChartPagingViewController(nibName: "ChartPagingViewController", bundle: nil)
     
     let objects: [ChartObject] = {
         var objects: [ChartObject] = []
@@ -46,7 +46,7 @@ class ViewController: UIViewController, ChartPageViewControllerDataSource {
         pageViewController.chartDataSource = self
         pageViewController.reloadData()
         pageViewController.view.frame = self.view.frame
-        self.view.addSubview(pageViewController.view)
+        self.view.tlk_addSubview(pageViewController.view, options: TLKAppearanceOptions.Overlay)
     }
     
     // Paging Data Source

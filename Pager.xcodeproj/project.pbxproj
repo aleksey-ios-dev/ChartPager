@@ -7,17 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B17C2CA1B00C973005F1C11 /* ChartPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B17C2C91B00C973005F1C11 /* ChartPageControl.swift */; };
+		5B17C2CE1B00CA68005F1C11 /* ACXibInstantiatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B17C2CD1B00CA68005F1C11 /* ACXibInstantiatedView.m */; };
+		5B6BBF511B00AF44003E327E /* ChartPagingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B6BBF501B00AF44003E327E /* ChartPagingViewController.xib */; };
+		5B6BBF551B00BF86003E327E /* UIView+TLKAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6BBF541B00BF86003E327E /* UIView+TLKAppearance.m */; };
 		5BA65C5C1AFC7C8B00297DC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C5B1AFC7C8B00297DC8 /* AppDelegate.swift */; };
 		5BA65C5E1AFC7C8B00297DC8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C5D1AFC7C8B00297DC8 /* ViewController.swift */; };
 		5BA65C611AFC7C8B00297DC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA65C5F1AFC7C8B00297DC8 /* Main.storyboard */; };
 		5BA65C631AFC7C8B00297DC8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BA65C621AFC7C8B00297DC8 /* Images.xcassets */; };
 		5BA65C661AFC7C8B00297DC8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BA65C641AFC7C8B00297DC8 /* LaunchScreen.xib */; };
 		5BA65C721AFC7C8B00297DC8 /* PagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C711AFC7C8B00297DC8 /* PagerTests.swift */; };
-		5BA65C7C1AFC7E1300297DC8 /* ChartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C7B1AFC7E1300297DC8 /* ChartPageViewController.swift */; };
-		5BA65C7E1AFC7F7100297DC8 /* СhartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C7D1AFC7F7100297DC8 /* СhartViewController.swift */; };
+		5BA65C7C1AFC7E1300297DC8 /* ChartPagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C7B1AFC7E1300297DC8 /* ChartPagingViewController.swift */; };
+		5BA65C7E1AFC7F7100297DC8 /* СhartSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C7D1AFC7F7100297DC8 /* СhartSlideViewController.swift */; };
 		5BA65C831AFC82E300297DC8 /* ACPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C821AFC82E300297DC8 /* ACPageController.m */; };
 		5BA65C861AFC83F000297DC8 /* UIPageViewController+ACPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C851AFC83F000297DC8 /* UIPageViewController+ACPageController.m */; };
-		5BA65C891AFEEC8500297DC8 /* ChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BA65C881AFEEC8500297DC8 /* ChartViewController.xib */; };
+		5BA65C891AFEEC8500297DC8 /* ChartSlideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BA65C881AFEEC8500297DC8 /* ChartSlideViewController.xib */; };
 		5BA65C921AFF6B7000297DC8 /* СhartObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C911AFF6B7000297DC8 /* СhartObject.swift */; };
 		5BA65C941AFF709100297DC8 /* Objects.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BA65C931AFF709100297DC8 /* Objects.plist */; };
 		5BA65C981AFF7E6300297DC8 /* UIColor+HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C971AFF7E6300297DC8 /* UIColor+HexColors.m */; };
@@ -34,6 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B17C2C91B00C973005F1C11 /* ChartPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPageControl.swift; sourceTree = "<group>"; };
+		5B17C2CC1B00CA68005F1C11 /* ACXibInstantiatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACXibInstantiatedView.h; sourceTree = "<group>"; };
+		5B17C2CD1B00CA68005F1C11 /* ACXibInstantiatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACXibInstantiatedView.m; sourceTree = "<group>"; };
+		5B6BBF501B00AF44003E327E /* ChartPagingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartPagingViewController.xib; sourceTree = "<group>"; };
+		5B6BBF531B00BF86003E327E /* UIView+TLKAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TLKAppearance.h"; sourceTree = "<group>"; };
+		5B6BBF541B00BF86003E327E /* UIView+TLKAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TLKAppearance.m"; sourceTree = "<group>"; };
 		5BA65C561AFC7C8B00297DC8 /* Pager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA65C5A1AFC7C8B00297DC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BA65C5B1AFC7C8B00297DC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,14 +54,14 @@
 		5BA65C6B1AFC7C8B00297DC8 /* PagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA65C701AFC7C8B00297DC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BA65C711AFC7C8B00297DC8 /* PagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerTests.swift; sourceTree = "<group>"; };
-		5BA65C7B1AFC7E1300297DC8 /* ChartPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPageViewController.swift; sourceTree = "<group>"; };
-		5BA65C7D1AFC7F7100297DC8 /* СhartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "СhartViewController.swift"; sourceTree = "<group>"; };
+		5BA65C7B1AFC7E1300297DC8 /* ChartPagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPagingViewController.swift; sourceTree = "<group>"; };
+		5BA65C7D1AFC7F7100297DC8 /* СhartSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "СhartSlideViewController.swift"; sourceTree = "<group>"; };
 		5BA65C801AFC82E200297DC8 /* Pager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Pager-Bridging-Header.h"; path = "Pager/Pager-Bridging-Header.h"; sourceTree = "<group>"; };
 		5BA65C811AFC82E300297DC8 /* ACPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPageController.h; sourceTree = "<group>"; };
 		5BA65C821AFC82E300297DC8 /* ACPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACPageController.m; sourceTree = "<group>"; };
 		5BA65C841AFC83F000297DC8 /* UIPageViewController+ACPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPageViewController+ACPageController.h"; sourceTree = "<group>"; };
 		5BA65C851AFC83F000297DC8 /* UIPageViewController+ACPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIPageViewController+ACPageController.m"; sourceTree = "<group>"; };
-		5BA65C881AFEEC8500297DC8 /* ChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartViewController.xib; sourceTree = "<group>"; };
+		5BA65C881AFEEC8500297DC8 /* ChartSlideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartSlideViewController.xib; sourceTree = "<group>"; };
 		5BA65C911AFF6B7000297DC8 /* СhartObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "СhartObject.swift"; sourceTree = "<group>"; };
 		5BA65C931AFF709100297DC8 /* Objects.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Objects.plist; sourceTree = "<group>"; };
 		5BA65C961AFF7E6300297DC8 /* UIColor+HexColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColors.h"; sourceTree = "<group>"; };
@@ -76,6 +86,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B17C2C81B00C912005F1C11 /* Page Control */ = {
+			isa = PBXGroup;
+			children = (
+				5B17C2C91B00C973005F1C11 /* ChartPageControl.swift */,
+			);
+			name = "Page Control";
+			sourceTree = "<group>";
+		};
+		5B17C2CB1B00CA5B005F1C11 /* Xib Instantiated View */ = {
+			isa = PBXGroup;
+			children = (
+				5B17C2CC1B00CA68005F1C11 /* ACXibInstantiatedView.h */,
+				5B17C2CD1B00CA68005F1C11 /* ACXibInstantiatedView.m */,
+			);
+			name = "Xib Instantiated View";
+			sourceTree = "<group>";
+		};
+		5B6BBF521B00BF77003E327E /* UIView + TLKAppearance */ = {
+			isa = PBXGroup;
+			children = (
+				5B6BBF531B00BF86003E327E /* UIView+TLKAppearance.h */,
+				5B6BBF541B00BF86003E327E /* UIView+TLKAppearance.m */,
+			);
+			name = "UIView + TLKAppearance";
+			sourceTree = "<group>";
+		};
 		5BA65C4D1AFC7C8B00297DC8 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +161,9 @@
 		5BA65C7F1AFC82C700297DC8 /* Derived */ = {
 			isa = PBXGroup;
 			children = (
+				5B17C2CB1B00CA5B005F1C11 /* Xib Instantiated View */,
+				5BA65C951AFF7E3E00297DC8 /* UIColor + HEX */,
+				5B6BBF521B00BF77003E327E /* UIView + TLKAppearance */,
 				5BA65C871AFC83F500297DC8 /* Page Controller */,
 			);
 			name = Derived;
@@ -133,8 +172,6 @@
 		5BA65C871AFC83F500297DC8 /* Page Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5BA65C951AFF7E3E00297DC8 /* UIColor + HEX */,
-				5BA65C8A1AFF1B9100297DC8 /* New Group */,
 				5BA65C841AFC83F000297DC8 /* UIPageViewController+ACPageController.h */,
 				5BA65C851AFC83F000297DC8 /* UIPageViewController+ACPageController.m */,
 				5BA65C811AFC82E300297DC8 /* ACPageController.h */,
@@ -143,19 +180,13 @@
 			name = "Page Controller";
 			sourceTree = "<group>";
 		};
-		5BA65C8A1AFF1B9100297DC8 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
 		5BA65C8B1AFF664100297DC8 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
+				5B17C2C81B00C912005F1C11 /* Page Control */,
 				5BA65C901AFF697500297DC8 /* ChartObject */,
 				5BA65C7F1AFC82C700297DC8 /* Derived */,
-				5BA65C8D1AFF666C00297DC8 /* ChartViewController */,
+				5BA65C8D1AFF666C00297DC8 /* Slide */,
 				5BA65C8C1AFF664C00297DC8 /* ChartPageViewController */,
 			);
 			name = Chart;
@@ -165,18 +196,19 @@
 		5BA65C8C1AFF664C00297DC8 /* ChartPageViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5BA65C7B1AFC7E1300297DC8 /* ChartPageViewController.swift */,
+				5BA65C7B1AFC7E1300297DC8 /* ChartPagingViewController.swift */,
+				5B6BBF501B00AF44003E327E /* ChartPagingViewController.xib */,
 			);
 			name = ChartPageViewController;
 			sourceTree = "<group>";
 		};
-		5BA65C8D1AFF666C00297DC8 /* ChartViewController */ = {
+		5BA65C8D1AFF666C00297DC8 /* Slide */ = {
 			isa = PBXGroup;
 			children = (
-				5BA65C881AFEEC8500297DC8 /* ChartViewController.xib */,
-				5BA65C7D1AFC7F7100297DC8 /* СhartViewController.swift */,
+				5BA65C881AFEEC8500297DC8 /* ChartSlideViewController.xib */,
+				5BA65C7D1AFC7F7100297DC8 /* СhartSlideViewController.swift */,
 			);
-			name = ChartViewController;
+			name = Slide;
 			sourceTree = "<group>";
 		};
 		5BA65C8E1AFF688C00297DC8 /* Supporting Files */ = {
@@ -299,7 +331,8 @@
 			files = (
 				5BA65C611AFC7C8B00297DC8 /* Main.storyboard in Resources */,
 				5BA65C941AFF709100297DC8 /* Objects.plist in Resources */,
-				5BA65C891AFEEC8500297DC8 /* ChartViewController.xib in Resources */,
+				5BA65C891AFEEC8500297DC8 /* ChartSlideViewController.xib in Resources */,
+				5B6BBF511B00AF44003E327E /* ChartPagingViewController.xib in Resources */,
 				5BA65C661AFC7C8B00297DC8 /* LaunchScreen.xib in Resources */,
 				5BA65C631AFC7C8B00297DC8 /* Images.xcassets in Resources */,
 			);
@@ -319,14 +352,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BA65C7C1AFC7E1300297DC8 /* ChartPageViewController.swift in Sources */,
+				5BA65C7C1AFC7E1300297DC8 /* ChartPagingViewController.swift in Sources */,
 				5BA65C831AFC82E300297DC8 /* ACPageController.m in Sources */,
 				5BA65C5E1AFC7C8B00297DC8 /* ViewController.swift in Sources */,
+				5B17C2CE1B00CA68005F1C11 /* ACXibInstantiatedView.m in Sources */,
+				5B6BBF551B00BF86003E327E /* UIView+TLKAppearance.m in Sources */,
 				5BA65C5C1AFC7C8B00297DC8 /* AppDelegate.swift in Sources */,
 				5BA65C861AFC83F000297DC8 /* UIPageViewController+ACPageController.m in Sources */,
 				5BA65C981AFF7E6300297DC8 /* UIColor+HexColors.m in Sources */,
-				5BA65C7E1AFC7F7100297DC8 /* СhartViewController.swift in Sources */,
+				5BA65C7E1AFC7F7100297DC8 /* СhartSlideViewController.swift in Sources */,
 				5BA65C921AFF6B7000297DC8 /* СhartObject.swift in Sources */,
+				5B17C2CA1B00C973005F1C11 /* ChartPageControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +563,7 @@
 				5BA65C771AFC7C8B00297DC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5BA65C781AFC7C8B00297DC8 /* Build configuration list for PBXNativeTarget "PagerTests" */ = {
 			isa = XCConfigurationList;
@@ -535,6 +572,7 @@
 				5BA65C7A1AFC7C8B00297DC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

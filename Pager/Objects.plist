@@ -22,5 +22,25 @@
 		<key>color</key>
 		<string>06CE00</string>
 	</dict>
+	<dict>
+		<key>title</key>
+		<string>something</string>
+		<key>description</key>
+		<string>goes right</string>
+		<key>percentage</key>
+		<integer>17</integer>
+		<key>color</key>
+		<string>06CE00</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>something</string>
+		<key>description</key>
+		<string>goes right</string>
+		<key>percentage</key>
+		<integer>17</integer>
+		<key>color</key>
+		<string>06CE00</string>
+	</dict>
 </array>
 </plist>

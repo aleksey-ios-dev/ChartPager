@@ -5,3 +5,5 @@
 #import "ACPageController.h"
 #import "UIPageViewController+ACPageController.h"
 #import "UIColor+HexColors.h"
+#import "UIView+TLKAppearance.h"
+#import "ACXibInstantiatedView.h"
