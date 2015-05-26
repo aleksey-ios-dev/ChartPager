@@ -46,6 +46,7 @@ class ViewController: UIViewController, ChartPagingViewControllerDataSource {
         pageViewController.chartDataSource = self
         pageViewController.reloadData()
         pageViewController.view.frame = self.view.frame
+        self.addChildViewController(pageViewController)
         self.view.tlk_addSubview(pageViewController.view, options: TLKAppearanceOptions.Overlay)
     }
     

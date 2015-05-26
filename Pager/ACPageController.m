@@ -45,6 +45,9 @@
                                       direction:UIPageViewControllerNavigationDirectionForward
                                        animated:NO
                                      completion:nil];
+    
+    ac_safeBlockCall(_didFinishTransition, _pageViewController, _viewControllers.firstObject, [_viewControllers indexOfObject:_viewControllers.firstObject]);
+
 }
 
 - (void)setPageViewController:(UIPageViewController *)pageViewController {
@@ -99,7 +102,7 @@
    previousViewControllers:(NSArray *)previousViewControllers
        transitionCompleted:(BOOL)completed {
     [_scrollView setPagingEnabled:_pagingEnabled];
-    ac_safeBlockCall(_didFinishTransition, _pageViewController, [_viewControllers indexOfObject:[pageViewController.viewControllers lastObject]]);
+    ac_safeBlockCall(_didFinishTransition, pageViewController, pageViewController.viewControllers.lastObject, [_viewControllers indexOfObject:[pageViewController.viewControllers lastObject]]);
 }
 
 - (void)refresh {

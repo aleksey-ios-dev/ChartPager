@@ -33,6 +33,10 @@ static void *ACPageControllerKey;
     [self.ac_controller setViewControllers:[viewControllers copy]];
 }
 
+- (NSArray *)ac_viewControllers {
+    return [self.ac_controller viewControllers];
+}
+
 - (void)ac_showViewController:(UIViewController *)viewController {
     [self.ac_controller showViewController:viewController animated:YES];
 }

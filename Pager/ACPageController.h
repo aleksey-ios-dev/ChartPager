@@ -7,7 +7,7 @@
 
 @import UIKit;
 
-typedef void (^ACPageControllerTransitionHook)(UIPageViewController *pageViewController, NSUInteger pageIndex);
+typedef void (^ACPageControllerTransitionHook)(UIPageViewController *pageViewController, UIViewController *viewController, NSUInteger pageIndex);
 
 @interface ACPageController : NSObject <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 

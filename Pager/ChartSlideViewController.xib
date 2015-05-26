@@ -2,11 +2,13 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14E11f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChartSlideViewController" customModule="Pager" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundView" destination="Ano-wc-MIk" id="SQ2-BT-1Jb"/>
+                <outlet property="chartContainer" destination="bdi-UL-zT1" id="NJd-1M-eNV"/>
                 <outlet property="descriptionLabel" destination="pPg-s6-dkJ" id="bw3-h9-dE7"/>
                 <outlet property="percentageLabel" destination="ZXk-aa-Xq6" id="N4l-dp-yRT"/>
                 <outlet property="titleLabel" destination="F1E-eF-QGN" id="OQ4-kF-bPq"/>
@@ -28,31 +30,48 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1E-eF-QGN" userLabel="Title label">
-                    <rect key="frame" x="43" y="62" width="205" height="21"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdi-UL-zT1" userLabel="Chart Container">
+                    <rect key="frame" x="60" y="80" width="180" height="180"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXk-aa-Xq6" userLabel="Percentage label">
+                            <rect key="frame" x="-2" y="36" width="183" height="122"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="highlightedColor" red="0.023529411764705882" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="bdi-UL-zT1" secondAttribute="height" multiplier="1:1" id="puQ-N0-fsd"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1E-eF-QGN" userLabel="Title label">
+                    <rect key="frame" x="20" y="30" width="260" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="IpD-vL-9SF"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPg-s6-dkJ" userLabel="Description label">
+                    <rect key="frame" x="48" y="208" width="178" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPg-s6-dkJ" userLabel="Description label">
-                    <rect key="frame" x="48" y="103" width="178" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="percentage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXk-aa-Xq6" userLabel="Percentage label">
-                    <rect key="frame" x="43" y="143" width="183" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="highlightedColor" red="0.023529411764705882" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="F1E-eF-QGN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="L04-V2-3Og"/>
                 <constraint firstItem="Ano-wc-MIk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="ZPr-gR-Txi"/>
+                <constraint firstAttribute="centerX" secondItem="bdi-UL-zT1" secondAttribute="centerX" id="ZSA-mr-Ybu"/>
                 <constraint firstAttribute="trailing" secondItem="Ano-wc-MIk" secondAttribute="trailing" constant="20" id="fdH-Sb-Sy4"/>
+                <constraint firstAttribute="bottom" secondItem="bdi-UL-zT1" secondAttribute="bottom" constant="40" id="g5f-hf-ojP"/>
                 <constraint firstItem="Ano-wc-MIk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="iqP-z7-aem"/>
+                <constraint firstItem="F1E-eF-QGN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="u1N-dk-Jn4"/>
                 <constraint firstAttribute="bottom" secondItem="Ano-wc-MIk" secondAttribute="bottom" constant="20" id="xw2-tN-Az7"/>
+                <constraint firstAttribute="centerY" secondItem="bdi-UL-zT1" secondAttribute="centerY" constant="-20" id="yb2-la-pdI"/>
+                <constraint firstAttribute="trailing" secondItem="F1E-eF-QGN" secondAttribute="trailing" constant="20" id="yxu-cH-EOj"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

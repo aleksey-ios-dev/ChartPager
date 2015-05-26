@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>title</key>
-		<string>hello</string>
+		<string>первый</string>
 		<key>description</key>
 		<string>test object</string>
 		<key>percentage</key>
@@ -14,31 +14,31 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>something</string>
+		<string>второй</string>
 		<key>description</key>
 		<string>goes right</string>
 		<key>percentage</key>
-		<integer>17</integer>
+		<integer>35</integer>
 		<key>color</key>
 		<string>06CE00</string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>something</string>
+		<string>третий</string>
 		<key>description</key>
 		<string>goes right</string>
 		<key>percentage</key>
-		<integer>17</integer>
+		<integer>64</integer>
 		<key>color</key>
 		<string>06CE00</string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>something</string>
+		<string>четвертый</string>
 		<key>description</key>
 		<string>goes right</string>
 		<key>percentage</key>
-		<integer>17</integer>
+		<integer>70</integer>
 		<key>color</key>
 		<string>06CE00</string>
 	</dict>

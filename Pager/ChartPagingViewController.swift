@@ -17,7 +17,7 @@ protocol ChartPagingViewControllerDataSource {
     func shapeForPage(index: Int) -> UIBezierPath
 }
 
-class ChartPagingViewController : UIViewController {
+class ChartPagingViewController : UIViewController, ChartPageControlDelegate {
     var chartDataSource: ChartPagingViewControllerDataSource?
     @IBOutlet weak var pageViewContainer: UIView!
     @IBOutlet weak var pageControl: ChartPageControl!
@@ -38,14 +38,17 @@ class ChartPagingViewController : UIViewController {
             pageControl.selectButton(0)
         }
         
-        pageViewController.ac_setDidFinishTransition({ (controller, idx) -> Void in
-            self.pageControl.selectButton(Int(idx))
-        })
-//        pageControl.pagesCount = cdataSource.numberOfPages()
 
+        
+        pageControl.delegate = self
     }
     
     func reloadData() {
+        pageViewController.ac_setDidFinishTransition({ (pageController, viewController, idx) -> Void in
+            self.pageControl?.selectButton(Int(idx))
+            let slide = viewController as! ChartSlideViewController
+            slide.animate()
+        })
         var pages: [UIViewController] = Array()
         
         if let dataSource = chartDataSource {
@@ -64,6 +67,12 @@ class ChartPagingViewController : UIViewController {
             }
             pageViewController.ac_setViewControllers(pages)
         }
+    }
+    
+    //ChartPageControlDelegate
+    
+    func pageControlDidSelectButton(index: Int) {
+        pageViewController.ac_showPage(index)
     }
     
     //required staff

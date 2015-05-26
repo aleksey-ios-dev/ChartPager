@@ -25,6 +25,7 @@
 		5BA65C921AFF6B7000297DC8 /* СhartObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C911AFF6B7000297DC8 /* СhartObject.swift */; };
 		5BA65C941AFF709100297DC8 /* Objects.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BA65C931AFF709100297DC8 /* Objects.plist */; };
 		5BA65C981AFF7E6300297DC8 /* UIColor+HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C971AFF7E6300297DC8 /* UIColor+HexColors.m */; };
+		5BC035681B11E21B0079AE90 /* Tween.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC035671B11E21B0079AE90 /* Tween.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		5BA65C931AFF709100297DC8 /* Objects.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Objects.plist; sourceTree = "<group>"; };
 		5BA65C961AFF7E6300297DC8 /* UIColor+HexColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColors.h"; sourceTree = "<group>"; };
 		5BA65C971AFF7E6300297DC8 /* UIColor+HexColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColors.m"; sourceTree = "<group>"; };
+		5BC035671B11E21B0079AE90 /* Tween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tween.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 		5BA65C8B1AFF664100297DC8 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
+				5BC035661B11E1E90079AE90 /* Tween */,
 				5B17C2C81B00C912005F1C11 /* Page Control */,
 				5BA65C901AFF697500297DC8 /* ChartObject */,
 				5BA65C7F1AFC82C700297DC8 /* Derived */,
@@ -247,6 +250,14 @@
 				5BA65C971AFF7E6300297DC8 /* UIColor+HexColors.m */,
 			);
 			name = "UIColor + HEX";
+			sourceTree = "<group>";
+		};
+		5BC035661B11E1E90079AE90 /* Tween */ = {
+			isa = PBXGroup;
+			children = (
+				5BC035671B11E21B0079AE90 /* Tween.swift */,
+			);
+			name = Tween;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BA65C7C1AFC7E1300297DC8 /* ChartPagingViewController.swift in Sources */,
+				5BC035681B11E21B0079AE90 /* Tween.swift in Sources */,
 				5BA65C831AFC82E300297DC8 /* ACPageController.m in Sources */,
 				5BA65C5E1AFC7C8B00297DC8 /* ViewController.swift in Sources */,
 				5B17C2CE1B00CA68005F1C11 /* ACXibInstantiatedView.m in Sources */,

@@ -8,6 +8,7 @@
 @interface UIPageViewController (ACPageController)
 
 - (void)ac_setViewControllers:(NSArray *)viewControllers;
+- (NSArray *)ac_viewControllers;
 - (void)ac_showViewController:(UIViewController *)viewController;
 - (void)ac_showViewController:(UIViewController *)viewController animated:(BOOL)animated;
 - (void)ac_showPage:(NSInteger)page;
