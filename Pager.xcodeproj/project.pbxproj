@@ -26,6 +26,7 @@
 		5BA65C941AFF709100297DC8 /* Objects.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BA65C931AFF709100297DC8 /* Objects.plist */; };
 		5BA65C981AFF7E6300297DC8 /* UIColor+HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C971AFF7E6300297DC8 /* UIColor+HexColors.m */; };
 		5BC035681B11E21B0079AE90 /* Tween.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC035671B11E21B0079AE90 /* Tween.swift */; };
+		5BCF62D91B25B7A2007705E9 /* UILabel + Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF62D81B25B7A2007705E9 /* UILabel + Animation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		5BA65C961AFF7E6300297DC8 /* UIColor+HexColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColors.h"; sourceTree = "<group>"; };
 		5BA65C971AFF7E6300297DC8 /* UIColor+HexColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColors.m"; sourceTree = "<group>"; };
 		5BC035671B11E21B0079AE90 /* Tween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tween.swift; sourceTree = "<group>"; };
+		5BCF62D81B25B7A2007705E9 /* UILabel + Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel + Animation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 		5BA65C8B1AFF664100297DC8 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
+				5BCF62D71B25B698007705E9 /* Categories */,
 				5BC035661B11E1E90079AE90 /* Tween */,
 				5B17C2C81B00C912005F1C11 /* Page Control */,
 				5BA65C901AFF697500297DC8 /* ChartObject */,
@@ -258,6 +261,14 @@
 				5BC035671B11E21B0079AE90 /* Tween.swift */,
 			);
 			name = Tween;
+			sourceTree = "<group>";
+		};
+		5BCF62D71B25B698007705E9 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				5BCF62D81B25B7A2007705E9 /* UILabel + Animation.swift */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +383,7 @@
 				5BA65C5C1AFC7C8B00297DC8 /* AppDelegate.swift in Sources */,
 				5BA65C861AFC83F000297DC8 /* UIPageViewController+ACPageController.m in Sources */,
 				5BA65C981AFF7E6300297DC8 /* UIColor+HexColors.m in Sources */,
+				5BCF62D91B25B7A2007705E9 /* UILabel + Animation.swift in Sources */,
 				5BA65C7E1AFC7F7100297DC8 /* СhartSlideViewController.swift in Sources */,
 				5BA65C921AFF6B7000297DC8 /* СhartObject.swift in Sources */,
 				5B17C2CA1B00C973005F1C11 /* ChartPageControl.swift in Sources */,

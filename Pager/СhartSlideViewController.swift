@@ -14,6 +14,11 @@ class ChartSlideViewController : UIViewController {
     @IBOutlet weak var percentageLabel: UILabel!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var chartContainer: UIView!
+    @IBOutlet weak var descriptionCenterConstraint: NSLayoutConstraint!
+    
+    var drop: CAShapeLayer?
+    
+    var graphWidth: CGFloat = 14.0
     
     var chartColor: UIColor? { get {
             return percentageLabel.textColor
@@ -48,7 +53,7 @@ class ChartSlideViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.layer.cornerRadius = 20.0
+        self.view.layer.cornerRadius = graphWidth
         self.view.layer.masksToBounds = true
     }
     
@@ -64,32 +69,50 @@ class ChartSlideViewController : UIViewController {
         super.init(coder: aDecoder)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.descriptionLabel.hidden = true
         self.percentageLabel.text = ""
+        
+        drop?.removeFromSuperlayer()
+        drop = nil
     }
+    
     
     func animate () {
         animateGreyCircle(0.9)
         animateColoredCircle(0.9)
         animatePercentageLabel(0.9)
         animateDrop()
+        animateDescription(3.0)
+    }
+    
+    func animateDescription (delay: Double) {
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+        
+        dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
+            self.descriptionLabel.hidden = false
+            self.descriptionLabel.chr_animateAlpha(0.5, delay:0.0)
+            
+            self.descriptionCenterConstraint.constant = -50.0
+            self.view.layoutIfNeeded()
+            UIView.animateWithDuration(0.7, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+                self.descriptionCenterConstraint.constant = 0.0
+                self.view.layoutIfNeeded()
+                }, completion: nil)
+        }
     }
     
     func animateDrop () {
-        let drop: CAShapeLayer = CAShapeLayer()
+         drop = CAShapeLayer()
         
-        drop.path = UIBezierPath(ovalInRect: CGRect(
-            x: self.chartContainer.frame.size.width / 2.0 - 5.5,
-            y: -5.5,
-            width: 11.0,
-            height: 11.0)).CGPath
-        drop.fillColor = chartColor!.CGColor
+        drop!.path = UIBezierPath(ovalInRect: CGRect(
+            x: self.chartContainer.frame.size.width / 2.0 - graphWidth / 2.0,
+            y: (-graphWidth / 2.0),
+            width: graphWidth,
+            height: graphWidth)).CGPath
+        drop!.fillColor = chartColor!.CGColor
         chartContainer.layer.addSublayer(drop)
         
 //        
@@ -97,8 +120,8 @@ class ChartSlideViewController : UIViewController {
         dropFall.duration = 0.3
         dropFall.repeatCount = 1.0
         dropFall.fromValue = 0.0
-        dropFall.toValue = self.chartContainer.frame.size.height - 10.0
-        dropFall.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseIn)
+        dropFall.toValue = self.chartContainer.frame.size.height - graphWidth
+        dropFall.timingFunction = fallEaseIn()
         
         let dropLay: CABasicAnimation = CABasicAnimation(keyPath:"transform.translation.y")
         dropLay.beginTime = dropFall.duration
@@ -114,8 +137,7 @@ class ChartSlideViewController : UIViewController {
         dropJump.repeatCount = 1.0
         dropJump.fromValue = dropFall.toValue
         dropJump.toValue = 0.0
-        dropJump.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)
-        
+        dropJump.timingFunction = fallEaseOut()
         
         let dropSmash: CABasicAnimation = CABasicAnimation(keyPath:"transform.scale.y")
         dropSmash.beginTime = dropLay.beginTime - 0.1
@@ -127,21 +149,12 @@ class ChartSlideViewController : UIViewController {
         dropSmash.autoreverses = true
         dropSmash.removedOnCompletion = false
         
-//        drop.addAnimation(dropSmash, forKey: "smash")
-        
-        
         let group: CAAnimationGroup = CAAnimationGroup()
         group.duration = 7.0
         group.animations = [dropFall, dropLay, dropJump, dropSmash]
         group.removedOnCompletion = false
-        
-        drop.addAnimation(group, forKey: "move")
-        
-        
 
-        
-        
-        
+        drop!.addAnimation(group, forKey: "move")
     }
     
     //Chart setup
@@ -158,7 +171,7 @@ class ChartSlideViewController : UIViewController {
 
         circle.fillColor = UIColor.clearColor().CGColor
         circle.strokeColor = chartColor!.CGColor //TODO: нужен дефолтный цвет, если нет нормального
-        circle.lineWidth = 11.0;
+        circle.lineWidth = graphWidth;
         circle.strokeEnd = 0.0
         
 
@@ -174,8 +187,8 @@ class ChartSlideViewController : UIViewController {
         mainChartShow.repeatCount = 1.0;
         mainChartShow.fromValue = 0.0
         mainChartShow.toValue = maxValue
-        mainChartShow.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)
-        
+//        mainChartShow.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)
+        mainChartShow.timingFunction = easeOut()
         
         let mainChartStable: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
         mainChartStable.duration = 1.2;
@@ -190,7 +203,7 @@ class ChartSlideViewController : UIViewController {
         mainChartHide.repeatCount = 1.0;
         mainChartHide.fromValue = maxValue
         mainChartHide.toValue = 0.0
-        mainChartHide.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)
+        mainChartHide.timingFunction = easeOut()
         mainChartHide.removedOnCompletion = false
         
         let group: CAAnimationGroup = CAAnimationGroup()
@@ -211,7 +224,7 @@ class ChartSlideViewController : UIViewController {
         
         circle.fillColor = UIColor.clearColor().CGColor
         circle.strokeColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
-        circle.lineWidth = 11.0;
+        circle.lineWidth = graphWidth;
         circle.strokeEnd = 0.0
         
         chartContainer.layer.addSublayer(circle)
@@ -224,7 +237,7 @@ class ChartSlideViewController : UIViewController {
         mainChartShow.repeatCount = 1.0;
         mainChartShow.fromValue = 0.0
         mainChartShow.toValue = maxValue
-        mainChartShow.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)
+        mainChartShow.timingFunction = easeOut()
         
         
         let mainChartStable: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
@@ -240,7 +253,7 @@ class ChartSlideViewController : UIViewController {
         mainChartHide.repeatCount = 1.0
         mainChartHide.fromValue = maxValue
         mainChartHide.toValue = 0.0
-        mainChartHide.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)
+        mainChartHide.timingFunction = easeOut()
         mainChartHide.removedOnCompletion = false
         
         let group: CAAnimationGroup = CAAnimationGroup()
@@ -266,6 +279,22 @@ class ChartSlideViewController : UIViewController {
             tween.perform()
         }
     }
+    
+    func easeOut () -> CAMediaTimingFunction {
+        return CAMediaTimingFunction(controlPoints: 0.4, 0.0, 0.4, 1.0)
+    }
+    
+    
+    func fallEaseIn () -> CAMediaTimingFunction {
+        return CAMediaTimingFunction(controlPoints: 0.4, 0.0, 1.0, 0.4)
+    }
+    
+    
+    func fallEaseOut () -> CAMediaTimingFunction {
+        return CAMediaTimingFunction(controlPoints: 0.0, 0.4, 0.4, 1.0)
+    }
+    
+    
 }
 
 
