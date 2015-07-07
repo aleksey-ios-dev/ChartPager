@@ -27,6 +27,7 @@
 		5BA65C981AFF7E6300297DC8 /* UIColor+HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C971AFF7E6300297DC8 /* UIColor+HexColors.m */; };
 		5BC035681B11E21B0079AE90 /* Tween.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC035671B11E21B0079AE90 /* Tween.swift */; };
 		5BCF62D91B25B7A2007705E9 /* UILabel + Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF62D81B25B7A2007705E9 /* UILabel + Animation.swift */; };
+		5BF71F961B4BCA7700F66B5B /* RoundChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF71F951B4BCA7700F66B5B /* RoundChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		5BA65C971AFF7E6300297DC8 /* UIColor+HexColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColors.m"; sourceTree = "<group>"; };
 		5BC035671B11E21B0079AE90 /* Tween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tween.swift; sourceTree = "<group>"; };
 		5BCF62D81B25B7A2007705E9 /* UILabel + Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel + Animation.swift"; sourceTree = "<group>"; };
+		5BF71F951B4BCA7700F66B5B /* RoundChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 		5BA65C581AFC7C8B00297DC8 /* Pager */ = {
 			isa = PBXGroup;
 			children = (
+				5BF71F931B4BCA5C00F66B5B /* View */,
 				5BA65C8F1AFF68BD00297DC8 /* View Controller */,
 				5BA65C8E1AFF688C00297DC8 /* Supporting Files */,
 			);
@@ -271,6 +274,22 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		5BF71F931B4BCA5C00F66B5B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5BF71F941B4BCA6500F66B5B /* Round Chart */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		5BF71F941B4BCA6500F66B5B /* Round Chart */ = {
+			isa = PBXGroup;
+			children = (
+				5BF71F951B4BCA7700F66B5B /* RoundChartView.swift */,
+			);
+			name = "Round Chart";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -376,6 +395,7 @@
 			files = (
 				5BA65C7C1AFC7E1300297DC8 /* ChartPagingViewController.swift in Sources */,
 				5BC035681B11E21B0079AE90 /* Tween.swift in Sources */,
+				5BF71F961B4BCA7700F66B5B /* RoundChartView.swift in Sources */,
 				5BA65C831AFC82E300297DC8 /* ACPageController.m in Sources */,
 				5BA65C5E1AFC7C8B00297DC8 /* ViewController.swift in Sources */,
 				5B17C2CE1B00CA68005F1C11 /* ACXibInstantiatedView.m in Sources */,

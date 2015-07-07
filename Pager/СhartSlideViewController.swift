@@ -9,12 +9,15 @@
 import UIKit
 
 class ChartSlideViewController : UIViewController {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var percentageLabel: UILabel!
-    @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var chartContainer: UIView!
-    @IBOutlet weak var descriptionCenterConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var percentageLabel: UILabel!
+    @IBOutlet private weak var backgroundView: UIView!
+    @IBOutlet private weak var chartContainer: RoundChartView!
+    @IBOutlet private weak var ballContainer: UIView!
+    @IBOutlet private weak var logoImageView: UIImageView!
+    @IBOutlet private weak var imageSizeConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var descriptionCenterConstraint: NSLayoutConstraint!
     
     var drop: CAShapeLayer?
     
@@ -25,6 +28,8 @@ class ChartSlideViewController : UIViewController {
         }
         set {
             percentageLabel.textColor = newValue
+            logoImageView.tintColor = newValue
+            chartContainer.chartColor = newValue!.CGColor
         }
     }
     
@@ -45,6 +50,15 @@ class ChartSlideViewController : UIViewController {
         }
         set {
             descriptionLabel.text = newValue
+        }
+    }
+    
+    var logoImage: UIImage? {
+        get {
+         return logoImageView.image
+        }
+        set {
+            logoImageView.image = newValue?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         }
     }
     
@@ -69,23 +83,67 @@ class ChartSlideViewController : UIViewController {
         super.init(coder: aDecoder)
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        chartContainer.reset()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+//        chartContainer.reset()
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+//        chartContainer.reset()
         
         self.descriptionLabel.hidden = true
         self.percentageLabel.text = ""
+        self.imageSizeConstraint.constant = 0.0
+
         
-        drop?.removeFromSuperlayer()
-        drop = nil
+//        drop?.removeFromSuperlayer()
+//        drop = nil
     }
     
-    
     func animate () {
-        animateGreyCircle(0.9)
-        animateColoredCircle(0.9)
-        animatePercentageLabel(0.9)
-        animateDrop()
-        animateDescription(3.0)
+        chartContainer.show(percentage!)
+        
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
+        
+        dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
+           self.chartContainer.hide()
+        }
+//                        animateGreyCircle(0.9)
+//        animateColoredCircle(0.9)
+//        animatePercentageLabel(0.9)
+//        animateDrop()
+//        animateDescription(3.0)
+//        animateImage(1.0)
+    }
+    
+    func animateImage(delay: Double) {
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+        
+        dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.imageSizeConstraint.constant = 50.0
+                self.view.layoutIfNeeded()
+            })
+            
+            let dropDisappear: CABasicAnimation = CABasicAnimation(keyPath:"transform.scale")
+//                            dropDisappear.beginTime = dropLay.beginTime - 0.1
+            dropDisappear.duration = 0.3
+                            dropDisappear.repeatCount = 1.0
+                            dropDisappear.fromValue = 1.0
+            dropDisappear.toValue = NSValue(CATransform3D:CATransform3DMakeScale(0.0, 0.0, 0.0))
+                            dropDisappear.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionLinear)
+                            dropDisappear.autoreverses = false
+            dropDisappear.removedOnCompletion = false
+            dropDisappear.fillMode = kCAFillModeForwards
+
+            self.drop!.addAnimation(dropDisappear, forKey: "disappear")
+        }
     }
     
     func animateDescription (delay: Double) {
@@ -106,16 +164,15 @@ class ChartSlideViewController : UIViewController {
     
     func animateDrop () {
          drop = CAShapeLayer()
-        
+
         drop!.path = UIBezierPath(ovalInRect: CGRect(
-            x: self.chartContainer.frame.size.width / 2.0 - graphWidth / 2.0,
+            x: 0.0,
             y: (-graphWidth / 2.0),
             width: graphWidth,
             height: graphWidth)).CGPath
         drop!.fillColor = chartColor!.CGColor
-        chartContainer.layer.addSublayer(drop)
+        ballContainer.layer.addSublayer(drop)
         
-//        
         let dropFall: CABasicAnimation = CABasicAnimation(keyPath:"transform.translation.y")
         dropFall.duration = 0.3
         dropFall.repeatCount = 1.0
@@ -152,117 +209,117 @@ class ChartSlideViewController : UIViewController {
         let group: CAAnimationGroup = CAAnimationGroup()
         group.duration = 7.0
         group.animations = [dropFall, dropLay, dropJump, dropSmash]
-        group.removedOnCompletion = false
+        group.removedOnCompletion = true
 
         drop!.addAnimation(group, forKey: "move")
     }
     
     //Chart setup
+//    
+//    func animateColoredCircle(delay: Double) {
+//
+//        //Add main chart
+//        let radius: CGFloat = self.chartContainer.frame.size.width / 2.0
+//        let circle: CAShapeLayer = CAShapeLayer()
+//        
+//        circle.position = CGPointZero
+//        circle.lineCap = kCALineCapRound
+//        circle.path = UIBezierPath(roundedRect: chartContainer.bounds, cornerRadius: radius).CGPath
+//
+//        circle.fillColor = UIColor.clearColor().CGColor
+//        circle.strokeColor = chartColor!.CGColor //TODO: нужен дефолтный цвет, если нет нормального
+//        circle.lineWidth = graphWidth;
+//        circle.strokeEnd = 0.0
+//        
+//
+//        chartContainer.layer.addSublayer(circle)
+//        
+//        //Animate colored circle
+//        
+//        let maxValue: Float = Float(percentage!) / 100.0
+//        
+//        let mainChartShow: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
+//        mainChartShow.beginTime = delay
+//        mainChartShow.duration = 1.0;
+//        mainChartShow.repeatCount = 1.0;
+//        mainChartShow.fromValue = 0.0
+//        mainChartShow.toValue = maxValue
+////        mainChartShow.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)
+//        mainChartShow.timingFunction = easeOut()
+//        
+//        let mainChartStable: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
+//        mainChartStable.duration = 1.2;
+//        mainChartStable.beginTime = mainChartShow.beginTime + mainChartShow.duration
+//        mainChartStable.repeatCount = 1.0;
+//        mainChartStable.fromValue = maxValue
+//        mainChartStable.toValue = maxValue
+//        
+//        let mainChartHide: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
+//        mainChartHide.beginTime = mainChartStable.beginTime + mainChartStable.duration
+//        mainChartHide.duration = 0.4;
+//        mainChartHide.repeatCount = 1.0;
+//        mainChartHide.fromValue = maxValue
+//        mainChartHide.toValue = 0.0
+//        mainChartHide.timingFunction = easeOut()
+//        mainChartHide.removedOnCompletion = false
+//        
+//        let group: CAAnimationGroup = CAAnimationGroup()
+//        group.duration = 7.0
+//        group.animations = [mainChartShow, mainChartStable, mainChartHide]
+//        group.removedOnCompletion = false
+//        
+//        circle.addAnimation(group, forKey: "drawOutlineAnimation")
+//    }
     
-    func animateColoredCircle(delay: Double) {
-
-        //Add main chart
-        let radius: CGFloat = self.chartContainer.frame.size.width / 2.0
-        let circle: CAShapeLayer = CAShapeLayer()
-        
-        circle.position = CGPointZero
-        circle.lineCap = kCALineCapRound
-        circle.path = UIBezierPath(roundedRect: chartContainer.bounds, cornerRadius: radius).CGPath
-
-        circle.fillColor = UIColor.clearColor().CGColor
-        circle.strokeColor = chartColor!.CGColor //TODO: нужен дефолтный цвет, если нет нормального
-        circle.lineWidth = graphWidth;
-        circle.strokeEnd = 0.0
-        
-
-        chartContainer.layer.addSublayer(circle)
-        
-        //Animate colored circle
-        
-        let maxValue: Float = Float(percentage!) / 100.0
-        
-        let mainChartShow: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
-        mainChartShow.beginTime = delay
-        mainChartShow.duration = 1.0;
-        mainChartShow.repeatCount = 1.0;
-        mainChartShow.fromValue = 0.0
-        mainChartShow.toValue = maxValue
-//        mainChartShow.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseOut)
-        mainChartShow.timingFunction = easeOut()
-        
-        let mainChartStable: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
-        mainChartStable.duration = 1.2;
-        mainChartStable.beginTime = mainChartShow.beginTime + mainChartShow.duration
-        mainChartStable.repeatCount = 1.0;
-        mainChartStable.fromValue = maxValue
-        mainChartStable.toValue = maxValue
-        
-        let mainChartHide: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
-        mainChartHide.beginTime = mainChartStable.beginTime + mainChartStable.duration
-        mainChartHide.duration = 0.4;
-        mainChartHide.repeatCount = 1.0;
-        mainChartHide.fromValue = maxValue
-        mainChartHide.toValue = 0.0
-        mainChartHide.timingFunction = easeOut()
-        mainChartHide.removedOnCompletion = false
-        
-        let group: CAAnimationGroup = CAAnimationGroup()
-        group.duration = 7.0
-        group.animations = [mainChartShow, mainChartStable, mainChartHide]
-        group.removedOnCompletion = false
-        
-        circle.addAnimation(group, forKey: "drawOutlineAnimation")
-    }
-    
-    func animateGreyCircle(delay: Double) {
-        let radius: CGFloat = self.chartContainer.frame.size.width / 2.0
-        let circle: CAShapeLayer = CAShapeLayer()
-        
-        circle.position = CGPointZero
-        circle.lineCap = kCALineCapRound
-        circle.path = UIBezierPath(roundedRect: chartContainer.bounds, cornerRadius: radius).CGPath
-        
-        circle.fillColor = UIColor.clearColor().CGColor
-        circle.strokeColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
-        circle.lineWidth = graphWidth;
-        circle.strokeEnd = 0.0
-        
-        chartContainer.layer.addSublayer(circle)
-        
-        let maxValue: Float =  1.0
-        
-        let mainChartShow: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
-        mainChartShow.beginTime = delay
-        mainChartShow.duration = 1.0;
-        mainChartShow.repeatCount = 1.0;
-        mainChartShow.fromValue = 0.0
-        mainChartShow.toValue = maxValue
-        mainChartShow.timingFunction = easeOut()
-        
-        
-        let mainChartStable: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
-        mainChartStable.duration = 1.2;
-        mainChartStable.beginTime = mainChartShow.beginTime + mainChartShow.duration
-        mainChartStable.repeatCount = 1.0;
-        mainChartStable.fromValue = maxValue
-        mainChartStable.toValue = maxValue
-        
-        let mainChartHide: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
-        mainChartHide.beginTime = mainChartStable.beginTime + mainChartStable.duration
-        mainChartHide.duration = 0.4
-        mainChartHide.repeatCount = 1.0
-        mainChartHide.fromValue = maxValue
-        mainChartHide.toValue = 0.0
-        mainChartHide.timingFunction = easeOut()
-        mainChartHide.removedOnCompletion = false
-        
-        let group: CAAnimationGroup = CAAnimationGroup()
-        group.duration = 7.0
-        group.animations = [mainChartShow, mainChartStable, mainChartHide]
-        group.removedOnCompletion = false
-        
-        circle.addAnimation(group, forKey: "drawOutlineAnimation")
-    }
+//    func animateGreyCircle(delay: Double) {
+//        let radius: CGFloat = self.chartContainer.frame.size.width / 2.0
+//        let circle: CAShapeLayer = CAShapeLayer()
+//        
+//        circle.position = CGPointZero
+//        circle.lineCap = kCALineCapRound
+//        circle.path = UIBezierPath(roundedRect: chartContainer.bounds, cornerRadius: radius).CGPath
+//        
+//        circle.fillColor = UIColor.clearColor().CGColor
+//        circle.strokeColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
+//        circle.lineWidth = graphWidth;
+//        circle.strokeEnd = 0.0
+//        
+//        chartContainer.layer.addSublayer(circle)
+//        
+//        let maxValue: Float =  1.0
+//        
+//        let mainChartShow: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
+//        mainChartShow.beginTime = delay
+//        mainChartShow.duration = 1.0;
+//        mainChartShow.repeatCount = 1.0;
+//        mainChartShow.fromValue = 0.0
+//        mainChartShow.toValue = maxValue
+//        mainChartShow.timingFunction = easeOut()
+//        
+//        
+//        let mainChartStable: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
+//        mainChartStable.duration = 1.2;
+//        mainChartStable.beginTime = mainChartShow.beginTime + mainChartShow.duration
+//        mainChartStable.repeatCount = 1.0;
+//        mainChartStable.fromValue = maxValue
+//        mainChartStable.toValue = maxValue
+//        
+//        let mainChartHide: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
+//        mainChartHide.beginTime = mainChartStable.beginTime + mainChartStable.duration
+//        mainChartHide.duration = 0.4
+//        mainChartHide.repeatCount = 1.0
+//        mainChartHide.fromValue = maxValue
+//        mainChartHide.toValue = 0.0
+//        mainChartHide.timingFunction = easeOut()
+//        mainChartHide.removedOnCompletion = false
+//        
+//        let group: CAAnimationGroup = CAAnimationGroup()
+//        group.duration = 7.0
+//        group.animations = [mainChartShow, mainChartStable, mainChartHide]
+//        group.removedOnCompletion = false
+//        
+//        circle.addAnimation(group, forKey: "drawOutlineAnimation")
+//    }
     
     //Animate Percentage Label`
     

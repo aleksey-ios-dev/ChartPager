@@ -3,6 +3,8 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>logoName</key>
+		<string>logo1</string>
 		<key>title</key>
 		<string>первый</string>
 		<key>description</key>
@@ -13,6 +15,8 @@
 		<string>FF8178</string>
 	</dict>
 	<dict>
+		<key>logoName</key>
+		<string>logo1</string>
 		<key>title</key>
 		<string>второй</string>
 		<key>description</key>
@@ -23,6 +27,8 @@
 		<string>06CE00</string>
 	</dict>
 	<dict>
+		<key>logoName</key>
+		<string>logo1</string>
 		<key>title</key>
 		<string>третий</string>
 		<key>description</key>
@@ -33,6 +39,8 @@
 		<string>7632D3</string>
 	</dict>
 	<dict>
+		<key>logoName</key>
+		<string>logo1</string>
 		<key>title</key>
 		<string>четвертый</string>
 		<key>description</key>

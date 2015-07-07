@@ -102,7 +102,9 @@
    previousViewControllers:(NSArray *)previousViewControllers
        transitionCompleted:(BOOL)completed {
     [_scrollView setPagingEnabled:_pagingEnabled];
-    ac_safeBlockCall(_didFinishTransition, pageViewController, pageViewController.viewControllers.lastObject, [_viewControllers indexOfObject:[pageViewController.viewControllers lastObject]]);
+    if (pageViewController.viewControllers.lastObject != previousViewControllers.lastObject) {
+        ac_safeBlockCall(_didFinishTransition, pageViewController, pageViewController.viewControllers.lastObject, [_viewControllers indexOfObject:[pageViewController.viewControllers lastObject]]);
+    }
 }
 
 - (void)refresh {

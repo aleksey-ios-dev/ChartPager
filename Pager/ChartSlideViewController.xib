@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14E26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14E36b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -8,9 +8,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChartSlideViewController" customModule="Pager" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundView" destination="Ano-wc-MIk" id="SQ2-BT-1Jb"/>
+                <outlet property="ballContainer" destination="vN3-zB-sUf" id="cOE-WE-Zvy"/>
                 <outlet property="chartContainer" destination="bdi-UL-zT1" id="NJd-1M-eNV"/>
                 <outlet property="descriptionCenterConstraint" destination="vko-OO-0YZ" id="Ddc-vA-F5E"/>
                 <outlet property="descriptionLabel" destination="pPg-s6-dkJ" id="bw3-h9-dE7"/>
+                <outlet property="imageSizeConstraint" destination="g3j-Vq-p2l" id="XyR-s9-PUK"/>
+                <outlet property="logoImageView" destination="J7M-hg-1WV" id="Crv-R0-NDM"/>
                 <outlet property="percentageLabel" destination="ZXk-aa-Xq6" id="N4l-dp-yRT"/>
                 <outlet property="titleLabel" destination="F1E-eF-QGN" id="OQ4-kF-bPq"/>
                 <outlet property="view" destination="iN0-l3-epB" id="eZd-4x-1go"/>
@@ -31,9 +34,17 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdi-UL-zT1" userLabel="Chart Container">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdi-UL-zT1" userLabel="Chart Container" customClass="RoundChartView" customModule="Pager" customModuleProvider="target">
                     <rect key="frame" x="60" y="80" width="180" height="180"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vN3-zB-sUf" userLabel="Ball container">
+                            <rect key="frame" x="83" y="0.0" width="14" height="14"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="vN3-zB-sUf" secondAttribute="height" multiplier="22:22" id="cEM-BP-YyH"/>
+                                <constraint firstAttribute="width" constant="14" id="cWo-PS-Fmb"/>
+                            </constraints>
+                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXk-aa-Xq6" userLabel="Percentage label">
                             <rect key="frame" x="30" y="55" width="120" height="100"/>
                             <constraints>
@@ -48,7 +59,9 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="centerY" secondItem="ZXk-aa-Xq6" secondAttribute="centerY" constant="-15" id="BIG-Cw-zCp"/>
+                        <constraint firstAttribute="centerX" secondItem="vN3-zB-sUf" secondAttribute="centerX" id="Me1-C3-Oyh"/>
                         <constraint firstAttribute="centerX" secondItem="ZXk-aa-Xq6" secondAttribute="centerX" id="W3o-nR-th3"/>
+                        <constraint firstItem="vN3-zB-sUf" firstAttribute="top" secondItem="bdi-UL-zT1" secondAttribute="top" id="Y8M-tT-g1b"/>
                         <constraint firstAttribute="width" secondItem="bdi-UL-zT1" secondAttribute="height" multiplier="1:1" id="puQ-N0-fsd"/>
                     </constraints>
                 </view>
@@ -70,6 +83,13 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J7M-hg-1WV" userLabel="Logo Image View">
+                    <rect key="frame" x="150" y="75" width="0.0" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="J7M-hg-1WV" secondAttribute="height" multiplier="34:33" id="9Uv-o0-6DS"/>
+                        <constraint firstAttribute="height" id="g3j-Vq-p2l"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
@@ -80,6 +100,8 @@
                 <constraint firstAttribute="trailing" secondItem="Ano-wc-MIk" secondAttribute="trailing" constant="20" id="fdH-Sb-Sy4"/>
                 <constraint firstAttribute="bottom" secondItem="bdi-UL-zT1" secondAttribute="bottom" constant="40" id="g5f-hf-ojP"/>
                 <constraint firstItem="Ano-wc-MIk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="iqP-z7-aem"/>
+                <constraint firstItem="J7M-hg-1WV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="75" id="jhJ-nr-15a"/>
+                <constraint firstAttribute="centerX" secondItem="J7M-hg-1WV" secondAttribute="centerX" id="krJ-nE-Nld"/>
                 <constraint firstItem="F1E-eF-QGN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="u1N-dk-Jn4"/>
                 <constraint firstAttribute="centerX" secondItem="pPg-s6-dkJ" secondAttribute="centerX" id="vko-OO-0YZ" userLabel="Description center"/>
                 <constraint firstAttribute="bottom" secondItem="Ano-wc-MIk" secondAttribute="bottom" constant="20" id="xw2-tN-Az7"/>

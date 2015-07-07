@@ -14,7 +14,7 @@ protocol ChartPagingViewControllerDataSource {
     func percentageForPage(index: Int) -> Int
     func titleForPage(index: Int) -> String
     func descriptionForPage(index: Int) -> String
-    func shapeForPage(index: Int) -> UIBezierPath
+    func logoForPage(index: Int) -> UIImage
 }
 
 class ChartPagingViewController : UIViewController, ChartPageControlDelegate {
@@ -59,6 +59,7 @@ class ChartPagingViewController : UIViewController, ChartPageControlDelegate {
                 vc.chartColor = dataSource.colorForPage(idx)
                 vc.chartDescription = dataSource.descriptionForPage(idx)
                 vc.percentage = dataSource.percentageForPage(idx)
+                vc.logoImage = dataSource.logoForPage(idx)
                 pages.append(vc)
             }
             

@@ -14,5 +14,6 @@ class ChartObject {
     var title: String?
     var description: String?
     var shape: UIBezierPath?
+    var logoImage: UIImage?
 }
 

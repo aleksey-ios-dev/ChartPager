@@ -35,6 +35,10 @@ class ViewController: UIViewController, ChartPagingViewControllerDataSource {
                 object.percentage = percentage
             }
             
+            if let logoName: String = dictionary["logoName"] as? String {
+                object.logoImage = UIImage(named: logoName)
+            }
+            
             objects.append(object)
         }
         
@@ -72,7 +76,7 @@ class ViewController: UIViewController, ChartPagingViewControllerDataSource {
         return objects[index].description!
     }
     
-    func shapeForPage(index: Int) -> UIBezierPath {
-        return UIBezierPath()
+    func logoForPage(index: Int) -> UIImage {
+        return objects[index].logoImage!
     }
 }
