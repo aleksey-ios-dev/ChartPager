@@ -69,15 +69,3 @@ extension UILabel {
             
     }
 }
-
-
-//- (NSAttributedString *)ac_attributedStringWithFont:(UIFont *)font color:(UIColor *)color {
-//    NSMutableDictionary *attributes = [NSMutableDictionary new];
-//    attributes[NSFontAttributeName] = font;
-//    
-//    if (color) {
-//        attributes[NSForegroundColorAttributeName] = color;
-//    }
-//    
-//    return  [[NSAttributedString alloc] initWithString:self attributes:attributes];
-//}

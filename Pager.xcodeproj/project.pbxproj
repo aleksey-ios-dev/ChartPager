@@ -28,6 +28,10 @@
 		5BC035681B11E21B0079AE90 /* Tween.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC035671B11E21B0079AE90 /* Tween.swift */; };
 		5BCF62D91B25B7A2007705E9 /* UILabel + Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF62D81B25B7A2007705E9 /* UILabel + Animation.swift */; };
 		5BF71F961B4BCA7700F66B5B /* RoundChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF71F951B4BCA7700F66B5B /* RoundChartView.swift */; };
+		5BF71F991B4D0A2000F66B5B /* DropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF71F981B4D0A2000F66B5B /* DropView.swift */; };
+		5BF71F9B1B4D274600F66B5B /* CAAnimationGroup + Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF71F9A1B4D274600F66B5B /* CAAnimationGroup + Sequence.swift */; };
+		5BF71F9E1B4D350A00F66B5B /* SlideLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF71F9D1B4D350A00F66B5B /* SlideLabel.swift */; };
+		5BF71FA51B4D69B600F66B5B /* UIView+ACFrames.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF71FA41B4D69B600F66B5B /* UIView+ACFrames.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +76,11 @@
 		5BC035671B11E21B0079AE90 /* Tween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tween.swift; sourceTree = "<group>"; };
 		5BCF62D81B25B7A2007705E9 /* UILabel + Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel + Animation.swift"; sourceTree = "<group>"; };
 		5BF71F951B4BCA7700F66B5B /* RoundChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundChartView.swift; sourceTree = "<group>"; };
+		5BF71F981B4D0A2000F66B5B /* DropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropView.swift; sourceTree = "<group>"; };
+		5BF71F9A1B4D274600F66B5B /* CAAnimationGroup + Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAAnimationGroup + Sequence.swift"; sourceTree = "<group>"; };
+		5BF71F9D1B4D350A00F66B5B /* SlideLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideLabel.swift; sourceTree = "<group>"; };
+		5BF71FA31B4D69B600F66B5B /* UIView+ACFrames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ACFrames.h"; sourceTree = "<group>"; };
+		5BF71FA41B4D69B600F66B5B /* UIView+ACFrames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ACFrames.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +177,7 @@
 		5BA65C7F1AFC82C700297DC8 /* Derived */ = {
 			isa = PBXGroup;
 			children = (
+				5BF71F9F1B4D695200F66B5B /* UIView + ACFrames */,
 				5B17C2CB1B00CA5B005F1C11 /* Xib Instantiated View */,
 				5BA65C951AFF7E3E00297DC8 /* UIColor + HEX */,
 				5B6BBF521B00BF77003E327E /* UIView + TLKAppearance */,
@@ -270,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				5BCF62D81B25B7A2007705E9 /* UILabel + Animation.swift */,
+				5BF71F9A1B4D274600F66B5B /* CAAnimationGroup + Sequence.swift */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -277,6 +288,8 @@
 		5BF71F931B4BCA5C00F66B5B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5BF71F9C1B4D34F100F66B5B /* SlideLabel */,
+				5BF71F971B4D09F200F66B5B /* Drop */,
 				5BF71F941B4BCA6500F66B5B /* Round Chart */,
 			);
 			name = View;
@@ -288,6 +301,31 @@
 				5BF71F951B4BCA7700F66B5B /* RoundChartView.swift */,
 			);
 			name = "Round Chart";
+			sourceTree = "<group>";
+		};
+		5BF71F971B4D09F200F66B5B /* Drop */ = {
+			isa = PBXGroup;
+			children = (
+				5BF71F981B4D0A2000F66B5B /* DropView.swift */,
+			);
+			name = Drop;
+			sourceTree = "<group>";
+		};
+		5BF71F9C1B4D34F100F66B5B /* SlideLabel */ = {
+			isa = PBXGroup;
+			children = (
+				5BF71F9D1B4D350A00F66B5B /* SlideLabel.swift */,
+			);
+			name = SlideLabel;
+			sourceTree = "<group>";
+		};
+		5BF71F9F1B4D695200F66B5B /* UIView + ACFrames */ = {
+			isa = PBXGroup;
+			children = (
+				5BF71FA31B4D69B600F66B5B /* UIView+ACFrames.h */,
+				5BF71FA41B4D69B600F66B5B /* UIView+ACFrames.m */,
+			);
+			name = "UIView + ACFrames";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,6 +434,7 @@
 				5BA65C7C1AFC7E1300297DC8 /* ChartPagingViewController.swift in Sources */,
 				5BC035681B11E21B0079AE90 /* Tween.swift in Sources */,
 				5BF71F961B4BCA7700F66B5B /* RoundChartView.swift in Sources */,
+				5BF71F9B1B4D274600F66B5B /* CAAnimationGroup + Sequence.swift in Sources */,
 				5BA65C831AFC82E300297DC8 /* ACPageController.m in Sources */,
 				5BA65C5E1AFC7C8B00297DC8 /* ViewController.swift in Sources */,
 				5B17C2CE1B00CA68005F1C11 /* ACXibInstantiatedView.m in Sources */,
@@ -403,10 +442,13 @@
 				5BA65C5C1AFC7C8B00297DC8 /* AppDelegate.swift in Sources */,
 				5BA65C861AFC83F000297DC8 /* UIPageViewController+ACPageController.m in Sources */,
 				5BA65C981AFF7E6300297DC8 /* UIColor+HexColors.m in Sources */,
+				5BF71F9E1B4D350A00F66B5B /* SlideLabel.swift in Sources */,
 				5BCF62D91B25B7A2007705E9 /* UILabel + Animation.swift in Sources */,
 				5BA65C7E1AFC7F7100297DC8 /* СhartSlideViewController.swift in Sources */,
+				5BF71FA51B4D69B600F66B5B /* UIView+ACFrames.m in Sources */,
 				5BA65C921AFF6B7000297DC8 /* СhartObject.swift in Sources */,
 				5B17C2CA1B00C973005F1C11 /* ChartPageControl.swift in Sources */,
+				5BF71F991B4D0A2000F66B5B /* DropView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

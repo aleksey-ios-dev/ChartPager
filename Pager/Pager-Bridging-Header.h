@@ -7,3 +7,4 @@
 #import "UIColor+HexColors.h"
 #import "UIView+TLKAppearance.h"
 #import "ACXibInstantiatedView.h"
+#import "UIView+ACFrames.h"

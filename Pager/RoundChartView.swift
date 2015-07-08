@@ -9,7 +9,7 @@
 import Foundation
 
 class RoundChartView : UIView {
-    private var percentage: Int = 0
+    static private var chartLineWidth: CGFloat = 18.0
     
     private let greyChart: CAShapeLayer = {
         let circle: CAShapeLayer = CAShapeLayer()
@@ -17,7 +17,7 @@ class RoundChartView : UIView {
         circle.lineCap = kCALineCapRound
         circle.fillColor = UIColor.clearColor().CGColor
         circle.strokeColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
-        circle.lineWidth = 16.0;
+        circle.lineWidth = chartLineWidth;
         circle.strokeEnd = 0.0
         return circle
         }()
@@ -27,17 +27,17 @@ class RoundChartView : UIView {
         circle.position = CGPointZero
         circle.lineCap = kCALineCapRound
         circle.fillColor = UIColor.clearColor().CGColor
-        circle.lineWidth = 16.0;
+        circle.lineWidth = chartLineWidth;
         circle.strokeEnd = 0.0
         circle.strokeColor = UIColor.redColor().CGColor
         return circle
         }()
     
-    var chartColor: CGColor {
+    var chartColor: UIColor {
         set {
-            colorChart.strokeColor = newValue
+            colorChart.strokeColor = newValue.CGColor
         } get {
-            return colorChart.strokeColor
+            return UIColor(CGColor:colorChart.strokeColor)!
         }
     }
     
@@ -56,31 +56,43 @@ class RoundChartView : UIView {
         greyChart.path = path
     }
     
-    func show(percentage: Int) {
-        self.percentage = percentage
-        self.colorChart.addAnimation(animation(percentage, duration: 1.0, timingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)), forKey: "show")
-        self.greyChart.addAnimation(animation(100, duration: 1.0, timingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)), forKey: "show")
-    }
     
-    func hide() {
+    func show(percentage: Int, delay: NSTimeInterval) {
+        let showTime: NSTimeInterval = 1.5
+    
+        let colorChartShow = animation(percentage, duration: 1.0, timingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
+        colorChartShow.beginTime = delay
+        
         let splashDuration: NSTimeInterval = 0.2
         let toValue: Int = min(100, percentage + 10)
+        
         let splash: CABasicAnimation = animation(toValue, duration: splashDuration, timingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
-        let hide: CABasicAnimation = animation(0, duration: 0.5, timingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
-        hide.beginTime = splashDuration
-        let group: CAAnimationGroup = CAAnimationGroup()
-        group.duration = 3.0
-        group.animations = [splash, hide]
-        group.fillMode = kCAFillModeForwards
-        group.removedOnCompletion = false
+        splash.beginTime = colorChartShow.beginTime + colorChartShow.duration + showTime
         
-        colorChart.addAnimation(group, forKey: "hide")
+        let colorHide: CABasicAnimation = animation(-1, duration: 0.5, timingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut))
+        colorHide.beginTime = splash.beginTime + splash.duration
         
-        let greyChartHide = animation(0, duration: 0.5, timingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut));
-        greyChartHide.beginTime = CACurrentMediaTime() + splashDuration
-        greyChart.addAnimation(greyChartHide, forKey: "hide")
+        let colorGroup: CAAnimationGroup = CAAnimationGroup()
+        colorGroup.duration = delay + colorChartShow.duration + showTime + splashDuration + colorHide.duration
+        colorGroup.animations = [colorChartShow, splash, colorHide]
+        colorGroup.fillMode = kCAFillModeForwards
+        colorGroup.removedOnCompletion = false
+        
+        colorChart.addAnimation(colorGroup, forKey: "show")
+        
+        let greyChartShow = animation(100, duration: 1.0, timingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
+        greyChartShow.beginTime = colorChartShow.beginTime
+        
+        let greyChartHide = animation(-1, duration: 0.5, timingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut));
+        greyChartHide.beginTime = colorHide.beginTime
+        
+        let greyGroup: CAAnimationGroup = CAAnimationGroup()
+        greyGroup.animations = [greyChartShow, greyChartHide]
+        greyGroup.duration = colorGroup.duration
+        
+        greyChart.addAnimation(greyGroup, forKey: "show")
     }
-    
+
     func reset () {
         colorChart.removeAllAnimations()
         greyChart.removeAllAnimations()
