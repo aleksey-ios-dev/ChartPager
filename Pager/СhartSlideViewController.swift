@@ -19,13 +19,12 @@ class ChartSlideViewController : UIViewController {
     
     private var animationPlayed = false
     
-    var graphWidth: CGFloat = 18.0
+    var graphWidth: CGFloat = 16.0
     
     var chartColor: UIColor? { get {
             return percentageLabel.textColor
         }
         set {
-            percentageLabel.textColor = newValue
             chartView.chartColor = newValue!
             dropView.color = newValue!
         }
@@ -74,16 +73,16 @@ class ChartSlideViewController : UIViewController {
         animationPlayed = true
         
         dropView.animateDrop()
-        chartView.show(percentage!, delay: 0.9)
-        animatePercentageLabel(0.9)
-        descriptionView.animate(3.7)
-        dropView.animateLogo(4.2)
+        chartView.show(percentage!, delay: 0.8)
+        animatePercentageLabel(0.8)
+        descriptionView.animate(2.3)
+        dropView.animateLogo(2.6)
     }
     
     func animatePercentageLabel (delay: Double) {
-        let tween: Tween = Tween(from: 0.0, to: Double(self.percentage!), duration: 1.0)
+        let tween: Tween = Tween(from: 0.0, to: Double(self.percentage!), duration: 0.5)
         tween.stepCallback = {(value) -> Void in
-            self.percentageLabel.text = "\(Int(value))"
+            self.percentageLabel.text = "\(Int(value))%"
         }
         
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))

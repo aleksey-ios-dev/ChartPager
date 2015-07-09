@@ -22,6 +22,7 @@
 }
 - (void)showPage:(NSUInteger)index animated:(BOOL)animated {
     [self showViewController:_viewControllers[index] animated:animated];
+    ac_safeBlockCall(_didFinishTransition, _pageViewController, _viewControllers.firstObject, [_viewControllers indexOfObject:_viewControllers.firstObject]);
 }
 
 - (void)showViewController:(UIViewController *)viewController animated:(BOOL)animated {

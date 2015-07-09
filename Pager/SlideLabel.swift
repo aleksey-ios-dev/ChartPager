@@ -14,6 +14,8 @@ class SlideLabelView: UIView {
         label.textAlignment = NSTextAlignment.Center
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        label.textColor = UIColor(red: 47/255.0, green: 49/255.0, blue: 49/255.0, alpha: 1.0)
+        label.font = UIFont(name: "HelveticaNeue-Medium", size: 17.0)
         return label
     }()
     var text: String? {
@@ -30,6 +32,8 @@ class SlideLabelView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         label.frame = bounds
+        label.ac_trimLeft(40.0)
+        label.ac_trimRight(40.0)
     }
     
     func animate (delay: NSTimeInterval) {

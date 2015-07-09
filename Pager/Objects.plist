@@ -6,49 +6,37 @@
 		<key>logoName</key>
 		<string>logo1</string>
 		<key>title</key>
-		<string>первый</string>
+		<string>Hydration</string>
 		<key>description</key>
-		<string>test object</string>
+		<string>Drink 500 ml of water to reach your goal.</string>
 		<key>percentage</key>
-		<integer>95</integer>
+		<integer>74</integer>
 		<key>color</key>
-		<string>FF8178</string>
+		<string>5c91fc</string>
 	</dict>
 	<dict>
 		<key>logoName</key>
-		<string>logo1</string>
+		<string>logo2</string>
 		<key>title</key>
-		<string>второй</string>
+		<string>Food</string>
 		<key>description</key>
-		<string>Карл у Клары украл кораллы, а Клара у Карла украла кларнет</string>
+		<string>300 cal left to your goal. Let yourself a cupcake :3</string>
 		<key>percentage</key>
-		<integer>35</integer>
+		<integer>86</integer>
 		<key>color</key>
-		<string>06CE00</string>
+		<string>21caaa</string>
 	</dict>
 	<dict>
 		<key>logoName</key>
-		<string>logo1</string>
+		<string>logo3</string>
 		<key>title</key>
-		<string>третий</string>
+		<string>Energy</string>
 		<key>description</key>
-		<string>goes right</string>
+		<string>You need to burn 800 cal more. Move it, move it!</string>
 		<key>percentage</key>
-		<integer>64</integer>
+		<integer>58</integer>
 		<key>color</key>
-		<string>7632D3</string>
-	</dict>
-	<dict>
-		<key>logoName</key>
-		<string>logo1</string>
-		<key>title</key>
-		<string>четвертый</string>
-		<key>description</key>
-		<string>goes right</string>
-		<key>percentage</key>
-		<integer>70</integer>
-		<key>color</key>
-		<string>37BEE7</string>
+		<string>fdb532</string>
 	</dict>
 </array>
 </plist>

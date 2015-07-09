@@ -29,9 +29,10 @@ class ChartPageControl: UIView {
         }
         
         for button in buttons {
-            button.backgroundColor = UIColor(red: 50 / 255.0, green: 50 / 255.0, blue: 50 / 255.0, alpha: 1.0)
+            button.backgroundColor = UIColor(red: 185 / 255.0, green: 185 / 255.0, blue: 185 / 255.0, alpha: 1.0)
+
         }
-        buttons[index].backgroundColor = UIColor(red: 185 / 255.0, green: 185 / 255.0, blue: 185 / 255.0, alpha: 1.0)
+        buttons[index].backgroundColor = UIColor(red: 50 / 255.0, green: 50 / 255.0, blue: 50 / 255.0, alpha: 1.0)
     }
     
     private func layoutButtons () {

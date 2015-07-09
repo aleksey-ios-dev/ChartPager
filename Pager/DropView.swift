@@ -9,7 +9,7 @@
 import Foundation
 
 class DropView : UIView {
-    var lineWidth: CGFloat = 18.0
+    var lineWidth: CGFloat = 16.0
     var logo: UIImage {
         set {logoImageView.image = newValue
         logoImageView.frame = CGRect(x: 0.0, y: 0.0, width: newValue.size.width, height: newValue.size.height)}
@@ -39,7 +39,7 @@ class DropView : UIView {
         drop.frame = CGRect(x: (bounds.width - lineWidth) / 2.0, y: -(lineWidth / 2.0), width: lineWidth, height: lineWidth)
         drop.path = UIBezierPath(ovalInRect: drop.bounds).CGPath
         
-         logoImageView.frame = CGRect(x: (bounds.width - 40.0) / 2.0, y: -lineWidth, width: 40.0, height: 40.0)
+         logoImageView.frame = CGRect(x: (bounds.width - 30.0) / 2.0, y: -lineWidth, width: 30.0, height: 30.0)
     }
     
     func animateDrop () {
@@ -93,6 +93,17 @@ class DropView : UIView {
         dropDisappear.fillMode = kCAFillModeForwards
         
         drop.addAnimation(dropDisappear, forKey: "disappear")
+        
+        
+        let dropMove: CABasicAnimation = CABasicAnimation(keyPath:"transform.translation.y")
+        dropMove.beginTime = CACurrentMediaTime() + delay
+        dropMove.duration = dropDisappear.duration
+        dropMove.toValue = 18.0
+        dropMove.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        dropMove.removedOnCompletion = false
+        dropMove.fillMode = kCAFillModeForwards
+        drop.addAnimation(dropMove, forKey: "moveDown")
+        
         
         let imageShow: CABasicAnimation = CABasicAnimation(keyPath:"transform")
         imageShow.beginTime = CACurrentMediaTime() + delay
