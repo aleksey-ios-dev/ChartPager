@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ptT-hV-ClM" userLabel="Shadow">
-                    <rect key="frame" x="22" y="22" width="259" height="259"/>
+                    <rect key="frame" x="22" y="22" width="259" height="264"/>
                     <color key="backgroundColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -32,7 +32,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ano-wc-MIk" userLabel="Background View">
-                    <rect key="frame" x="20" y="20" width="260" height="260"/>
+                    <rect key="frame" x="20" y="20" width="260" height="265"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -97,12 +97,12 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Ano-wc-MIk" secondAttribute="bottom" constant="20" id="3bb-R8-jaj"/>
+                <constraint firstAttribute="bottom" secondItem="Ano-wc-MIk" secondAttribute="bottom" constant="15" id="3bb-R8-jaj"/>
                 <constraint firstItem="F1E-eF-QGN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="6qy-et-FhI"/>
                 <constraint firstAttribute="centerX" secondItem="Wvx-pn-vi5" secondAttribute="centerX" id="CF5-xh-waH"/>
                 <constraint firstItem="0f2-t1-SF5" firstAttribute="top" secondItem="Wvx-pn-vi5" secondAttribute="bottom" constant="-20" id="N9m-Hp-642"/>
                 <constraint firstItem="0f2-t1-SF5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="U00-3Q-nkC"/>
-                <constraint firstAttribute="bottom" secondItem="ptT-hV-ClM" secondAttribute="bottom" constant="19" id="YIP-an-lKE"/>
+                <constraint firstAttribute="bottom" secondItem="ptT-hV-ClM" secondAttribute="bottom" constant="14" id="YIP-an-lKE"/>
                 <constraint firstAttribute="trailing" secondItem="Ano-wc-MIk" secondAttribute="trailing" constant="20" id="aTx-UZ-y3x"/>
                 <constraint firstItem="F1E-eF-QGN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="fxa-dq-ykZ"/>
                 <constraint firstItem="Ano-wc-MIk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="gkr-8h-dXv"/>

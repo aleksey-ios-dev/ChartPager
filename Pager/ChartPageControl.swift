@@ -51,23 +51,16 @@ class ChartPageControl: UIView {
         let count: CGFloat = CGFloat(pagesCount)
         let totalWidth: CGFloat = buttonWidth * count + gapWidth * (count - 1.0)
         var startX: CGFloat = (frame.size.width - totalWidth) / 2.0
-        
         for i in 0..<pagesCount {
             let button = UIButton(frame: CGRect(x: startX, y: 0, width: buttonWidth, height: buttonWidth))
             button.backgroundColor = UIColor(red: 50 / 255.0, green: 50 / 255.0, blue: 50 / 255.0, alpha: 1.0)
             button.layer.cornerRadius = buttonWidth / 2.0
             button.layer.masksToBounds = true
             button.tag = i
-            button.addTarget(self, action: "buttonClick:", forControlEvents: UIControlEvents.TouchUpInside)
             self.addSubview(button)
             buttons.append(button)
             
             startX += (buttonWidth + gapWidth)
         }
-    }
-    
-    func buttonClick(sender:UIButton) {
-        delegate?.pageControlDidSelectButton(sender.tag)
-        selectButton(sender.tag)
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14E11f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14E36b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7702"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -25,10 +25,10 @@
                     <rect key="frame" x="-3" y="430" width="380" height="237"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sxg-Sp-QJg" customClass="ChartPageControl" customModule="Pager" customModuleProvider="target">
-                            <rect key="frame" x="90" y="0.0" width="200" height="30"/>
+                            <rect key="frame" x="90" y="0.0" width="200" height="20"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="pfs-hv-QSd"/>
+                                <constraint firstAttribute="height" constant="20" id="pfs-hv-QSd"/>
                                 <constraint firstAttribute="width" constant="200" id="sQB-db-28Q"/>
                             </constraints>
                         </view>
