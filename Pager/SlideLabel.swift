@@ -15,7 +15,7 @@ class SlideLabelView: UIView {
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.ByWordWrapping
         label.textColor = UIColor(red: 47/255.0, green: 49/255.0, blue: 49/255.0, alpha: 1.0)
-        label.font = UIFont(name: "HelveticaNeue-Medium", size: 17.0)
+        label.font = UIFont(name: "HelveticaNeue-Medium", size: 16.0)
         return label
     }()
     var text: String? {

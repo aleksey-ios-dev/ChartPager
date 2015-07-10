@@ -32,6 +32,7 @@
 		5BF71F9B1B4D274600F66B5B /* CAAnimationGroup + Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF71F9A1B4D274600F66B5B /* CAAnimationGroup + Sequence.swift */; };
 		5BF71F9E1B4D350A00F66B5B /* SlideLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF71F9D1B4D350A00F66B5B /* SlideLabel.swift */; };
 		5BF71FA51B4D69B600F66B5B /* UIView+ACFrames.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF71FA41B4D69B600F66B5B /* UIView+ACFrames.m */; };
+		5BFFF74E1B4F9264006A0B79 /* YALTween.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFFF74D1B4F9264006A0B79 /* YALTween.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,8 @@
 		5BF71F9D1B4D350A00F66B5B /* SlideLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideLabel.swift; sourceTree = "<group>"; };
 		5BF71FA31B4D69B600F66B5B /* UIView+ACFrames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ACFrames.h"; sourceTree = "<group>"; };
 		5BF71FA41B4D69B600F66B5B /* UIView+ACFrames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ACFrames.m"; sourceTree = "<group>"; };
+		5BFFF74C1B4F9264006A0B79 /* YALTween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALTween.h; sourceTree = "<group>"; };
+		5BFFF74D1B4F9264006A0B79 /* YALTween.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALTween.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +180,7 @@
 		5BA65C7F1AFC82C700297DC8 /* Derived */ = {
 			isa = PBXGroup;
 			children = (
+				5BFFF74B1B4F9246006A0B79 /* Tween */,
 				5BF71F9F1B4D695200F66B5B /* UIView + ACFrames */,
 				5B17C2CB1B00CA5B005F1C11 /* Xib Instantiated View */,
 				5BA65C951AFF7E3E00297DC8 /* UIColor + HEX */,
@@ -328,6 +332,15 @@
 			name = "UIView + ACFrames";
 			sourceTree = "<group>";
 		};
+		5BFFF74B1B4F9246006A0B79 /* Tween */ = {
+			isa = PBXGroup;
+			children = (
+				5BFFF74C1B4F9264006A0B79 /* YALTween.h */,
+				5BFFF74D1B4F9264006A0B79 /* YALTween.m */,
+			);
+			name = Tween;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -432,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BA65C7C1AFC7E1300297DC8 /* ChartPagingViewController.swift in Sources */,
+				5BFFF74E1B4F9264006A0B79 /* YALTween.m in Sources */,
 				5BC035681B11E21B0079AE90 /* Tween.swift in Sources */,
 				5BF71F961B4BCA7700F66B5B /* RoundChartView.swift in Sources */,
 				5BF71F9B1B4D274600F66B5B /* CAAnimationGroup + Sequence.swift in Sources */,

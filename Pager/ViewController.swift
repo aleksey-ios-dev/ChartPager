@@ -79,4 +79,8 @@ class ViewController: UIViewController, ChartPagingViewControllerDataSource {
     func logoForPage(index: Int) -> UIImage {
         return objects[index].logoImage!
     }
+    
+    func chartThickness() -> CGFloat {
+        return 15.0
+    }
 }

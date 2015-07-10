@@ -19,7 +19,12 @@ class ChartSlideViewController : UIViewController {
     
     private var animationPlayed = false
     
-    var graphWidth: CGFloat = 16.0
+    var chartThickness: CGFloat = 0.0 {
+        didSet {
+            dropView.chartThickness = chartThickness
+            chartView.chartThickness = chartThickness
+        }
+    }
     
     var chartColor: UIColor? { get {
             return percentageLabel.textColor
@@ -64,7 +69,7 @@ class ChartSlideViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.layer.cornerRadius = graphWidth
+        self.view.layer.cornerRadius = chartThickness
         self.view.layer.masksToBounds = true
     }
     
@@ -72,24 +77,25 @@ class ChartSlideViewController : UIViewController {
         if animationPlayed {return}
         animationPlayed = true
         
-        dropView.animateDrop()
-        chartView.show(percentage!, delay: 0.8)
-        animatePercentageLabel(0.8)
-        descriptionView.animate(2.3)
-        dropView.animateLogo(2.6)
+        dropView.animateDrop(0.0)
+        chartView.show(percentage!, delay: 0.9)
+        animatePercentageLabel(0.9)
+        descriptionView.animate(2.7)
+        dropView.animateLogo(2.7)
     }
     
     func animatePercentageLabel (delay: Double) {
-        let tween: Tween = Tween(from: 0.0, to: Double(self.percentage!), duration: 0.5)
-        tween.stepCallback = {(value) -> Void in
-            self.percentageLabel.text = "\(Int(value))%"
+        let tween: YALTween = YALTween (object: self.percentageLabel, key: "text", range: NSMakeRange(0, percentage!), duration: 0.5)
+        
+        tween.timingFunction = CAMediaTimingFunction(controlPoints: 0.0, 0.4, 0.4, 1.0)
+
+        tween.mapper = {
+            animatable in
+            if (animatable == 0) {return ""}
+            return String(format: "%0.f%%", animatable)
         }
         
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-
-        dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
-            tween.perform()
-        }
+        tween.startWithDelay(delay);
     }
 }
 

@@ -32,9 +32,12 @@ extension UILabel {
         if let text = self.text {
             
             let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-
+            
+            let originalFontColor = self.textColor
+            
+            textColor = UIColor.clearColor()
             dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
-                self.chr_iterateAlpha(text, index: 0, delay: duration / Double(count(text)), font: self.font, color: self.textColor)
+                self.chr_iterateAlpha(text, index: 0, delay: duration / Double(count(text)), font: self.font, color: originalFontColor)
             }
         }
     }
@@ -60,12 +63,10 @@ extension UILabel {
             
             if (count(substringToHide) != 0) {
                 let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-                
+
                 dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
                     self.chr_iterateAlpha(text, index: index + 1, delay: delay, font: font, color:color)
                 }
-                
             }
-            
     }
 }

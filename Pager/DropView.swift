@@ -9,7 +9,7 @@
 import Foundation
 
 class DropView : UIView {
-    var lineWidth: CGFloat = 16.0
+    var chartThickness: CGFloat = 0.0
     var logo: UIImage {
         set {logoImageView.image = newValue
         logoImageView.frame = CGRect(x: 0.0, y: 0.0, width: newValue.size.width, height: newValue.size.height)}
@@ -36,18 +36,26 @@ class DropView : UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        drop.frame = CGRect(x: (bounds.width - lineWidth) / 2.0, y: -(lineWidth / 2.0), width: lineWidth, height: lineWidth)
+        drop.frame = CGRect(x: (bounds.width - chartThickness) / 2.0, y: -(chartThickness / 2.0), width: chartThickness, height: chartThickness)
         drop.path = UIBezierPath(ovalInRect: drop.bounds).CGPath
         
-         logoImageView.frame = CGRect(x: (bounds.width - 30.0) / 2.0, y: -lineWidth, width: 30.0, height: 30.0)
+         logoImageView.frame = CGRect(x: (bounds.width - 30.0) / 2.0, y: -chartThickness, width: 30.0, height: 30.0)
     }
     
-    func animateDrop () {
+    func animateDrop (delay: NSTimeInterval) {
         self.layer.addSublayer(drop)
         
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+        
+        dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
+            self.performDropAnimation()
+        }
+    }
+    
+    func performDropAnimation () {
         let dropFall: CABasicAnimation = CABasicAnimation(keyPath:"transform.translation.y")
         dropFall.duration = 0.3
-        dropFall.toValue = self.frame.size.height - lineWidth
+        dropFall.toValue = self.frame.size.height - chartThickness
         dropFall.timingFunction = fallEaseIn
         
         let dropLay: CABasicAnimation = CABasicAnimation(keyPath:"transform.translation.y")
@@ -59,7 +67,7 @@ class DropView : UIView {
         dropJump.duration = dropFall.duration * 1.5
         dropJump.toValue = 0.0
         dropJump.timingFunction = fallEaseOut
-
+        
         let group: CAAnimationGroup = CAAnimationGroup(sequence: [dropFall, dropLay, dropJump])
         drop.addAnimation(group, forKey: "move")
         
@@ -103,7 +111,6 @@ class DropView : UIView {
         dropMove.removedOnCompletion = false
         dropMove.fillMode = kCAFillModeForwards
         drop.addAnimation(dropMove, forKey: "moveDown")
-        
         
         let imageShow: CABasicAnimation = CABasicAnimation(keyPath:"transform")
         imageShow.beginTime = CACurrentMediaTime() + delay

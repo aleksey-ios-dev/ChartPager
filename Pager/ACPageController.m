@@ -48,7 +48,6 @@
                                      completion:nil];
     
     ac_safeBlockCall(_didFinishTransition, _pageViewController, _viewControllers.firstObject, [_viewControllers indexOfObject:_viewControllers.firstObject]);
-
 }
 
 - (void)setPageViewController:(UIPageViewController *)pageViewController {

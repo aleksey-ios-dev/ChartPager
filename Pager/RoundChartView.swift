@@ -9,7 +9,12 @@
 import Foundation
 
 class RoundChartView : UIView {
-    static private var chartLineWidth: CGFloat = 16.0
+    var chartThickness: CGFloat = 0.0 {
+        didSet {
+            greyChart.lineWidth = chartThickness
+            colorChart.lineWidth = chartThickness
+        }
+    }
     let easeOut = CAMediaTimingFunction(controlPoints: 0.0, 0.4, 0.4, 1.0)
 
     
@@ -19,7 +24,6 @@ class RoundChartView : UIView {
         circle.lineCap = kCALineCapRound
         circle.fillColor = UIColor.clearColor().CGColor
         circle.strokeColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
-        circle.lineWidth = chartLineWidth;
         circle.strokeEnd = 0.0
         return circle
         }()
@@ -29,7 +33,6 @@ class RoundChartView : UIView {
         circle.position = CGPointZero
         circle.lineCap = kCALineCapRound
         circle.fillColor = UIColor.clearColor().CGColor
-        circle.lineWidth = chartLineWidth;
         circle.strokeEnd = 0.0
         circle.strokeColor = UIColor.redColor().CGColor
         return circle

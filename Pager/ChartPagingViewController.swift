@@ -15,10 +15,12 @@ protocol ChartPagingViewControllerDataSource {
     func titleForPage(index: Int) -> String
     func descriptionForPage(index: Int) -> String
     func logoForPage(index: Int) -> UIImage
+    func chartThickness () -> CGFloat
 }
 
 class ChartPagingViewController : UIViewController, ChartPageControlDelegate {
     var chartDataSource: ChartPagingViewControllerDataSource?
+
     @IBOutlet weak var pageViewContainer: UIView!
     @IBOutlet weak var pageControl: ChartPageControl!
     
@@ -37,8 +39,6 @@ class ChartPagingViewController : UIViewController, ChartPageControlDelegate {
             pageControl.pagesCount = number
             pageControl.selectButton(0)
         }
-        
-
         
         pageControl.delegate = self
     }
@@ -60,6 +60,7 @@ class ChartPagingViewController : UIViewController, ChartPageControlDelegate {
                 vc.chartDescription = dataSource.descriptionForPage(idx)
                 vc.percentage = dataSource.percentageForPage(idx)
                 vc.logoImage = dataSource.logoForPage(idx)
+                vc.chartThickness = dataSource.chartThickness()
                 pages.append(vc)
             }
             
@@ -74,15 +75,5 @@ class ChartPagingViewController : UIViewController, ChartPageControlDelegate {
     
     func pageControlDidSelectButton(index: Int) {
         pageViewController.ac_showPage(index)
-    }
-    
-    //required staff
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-   required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
 }
