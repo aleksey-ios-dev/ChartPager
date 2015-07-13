@@ -56,7 +56,7 @@ class ViewController: UIViewController, ChartPagingViewControllerDataSource {
     
     // Paging Data Source
     
-    func numberOfPages() -> (Int) {
+    func numberOfPages() -> Int {
         return objects.count
     }
     
@@ -69,6 +69,7 @@ class ViewController: UIViewController, ChartPagingViewControllerDataSource {
     }
     
     func titleForPage(index: Int) -> String {
+        ///это краш, если нет тайтла -значит либо тайтл всегда дожен быть либо должна быть проверка
         return objects[index].title!
     }
     
@@ -81,6 +82,6 @@ class ViewController: UIViewController, ChartPagingViewControllerDataSource {
     }
     
     func chartThickness() -> CGFloat {
-        return 15.0
+        return 15
     }
 }

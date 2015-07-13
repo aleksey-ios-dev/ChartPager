@@ -6,11 +6,15 @@
 //  Copyright (c) 2015 Aleksey Chernish. All rights reserved.
 //
 
-
+///класс вроде как вообще не используется или я чото не понял
+/// лучше было бы юзать структуру
 class Tween {
-    var duration: Double
-    var from: Double
-    var to: Double
+    ///модификаторы доступа играют большое значение в Swift - необходимо использовать наиболее скрытую реализацию для обеспечения инкапсуляции
+    ///все что возможно должно быть объявлено как константа (swift 1.2 поддерживает константы с отложенной инициализацией)
+    var duration: Double // let duration
+    var from: Double // let from
+    var to: Double // let to
+    ///я так понимаю что это константа тогда она должна быть вне тела класса и выглядеть так private let steps = 100
     var steps = 100
     
     var stepCallback: ((value: Double) -> ())?
@@ -40,6 +44,7 @@ class Tween {
         if (idx >= array.count) {
             return
         }
+        ///это плохой стиль нужно использовать Optional Chaining - callback?(value: array[idx])
         if let callback = stepCallback {
             callback(value: array[idx])
         }

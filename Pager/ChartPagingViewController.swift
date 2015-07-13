@@ -18,11 +18,16 @@ protocol ChartPagingViewControllerDataSource {
     func chartThickness () -> CGFloat
 }
 
+///согласно пока неутвержденному кодестайлу рекомендуется оборачивать каждую реализацию интерфейса в екстеншен в том же файле
+///это дает прозрачность и структурированность кода
+///extension ChartPagingViewController: ChartPageControlDelegate
 class ChartPagingViewController : UIViewController, ChartPageControlDelegate {
+    ///не уверен что без дата сорса контроллер имеет смысл, может лучше var chartDataSource: ChartPagingViewControllerDataSource!
     var chartDataSource: ChartPagingViewControllerDataSource?
 
     @IBOutlet weak var pageViewContainer: UIView!
     @IBOutlet weak var pageControl: ChartPageControl!
+    
     
     private var pageViewController: UIPageViewController = {
         let controller = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options:nil)
@@ -45,10 +50,12 @@ class ChartPagingViewController : UIViewController, ChartPageControlDelegate {
     
     func reloadData() {
         pageViewController.ac_setDidFinishTransition({ (pageController, viewController, idx) -> Void in
+            ///PageControl вроде как всегда существует зачем chaining?
             self.pageControl?.selectButton(Int(idx))
             let slide = viewController as! ChartSlideViewController
             slide.animate()
         })
+        ///короче var pages = [UIViewController]()
         var pages: [UIViewController] = Array()
         
         if let dataSource = chartDataSource {
@@ -64,7 +71,9 @@ class ChartPagingViewController : UIViewController, ChartPageControlDelegate {
                 pages.append(vc)
             }
             
+            ///чо ж такое с этим контролом - аутлет же вроде куда ему дется
             if (self.pageControl != nil) {
+                ///тоже название параметра не помешает
                 pageControl.selectButton(0)
             }
             pageViewController.ac_setViewControllers(pages)

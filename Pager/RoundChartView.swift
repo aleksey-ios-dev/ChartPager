@@ -65,7 +65,7 @@ class RoundChartView : UIView {
     func show(percentage: Int, delay: NSTimeInterval) {
         let showTime: NSTimeInterval = 0.8
     
-        let colorChartShow = animation(percentage, duration: 0.6, timingFunction:easeOut)
+        let colorChartShow = animation(percentage, duration: 0.6, timingFunction: easeOut)
         colorChartShow.beginTime = delay
         
         let splashDuration: NSTimeInterval = 0.2

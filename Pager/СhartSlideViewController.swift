@@ -8,6 +8,7 @@
 
 import UIKit
 
+///двоеточие слитно с названием текущего класса
 class ChartSlideViewController : UIViewController {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionView: SlideLabelView!
@@ -19,6 +20,7 @@ class ChartSlideViewController : UIViewController {
     
     private var animationPlayed = false
     
+    ///не нужно везде 0.0 писать :)
     var chartThickness: CGFloat = 0.0 {
         didSet {
             dropView.chartThickness = chartThickness
@@ -26,6 +28,7 @@ class ChartSlideViewController : UIViewController {
         }
     }
     
+    ///get со следующей строки
     var chartColor: UIColor? { get {
             return percentageLabel.textColor
         }
@@ -64,6 +67,7 @@ class ChartSlideViewController : UIViewController {
         }
     }
     
+    ///странные дела с этой переменной- ты ее объявил как такую которая может с легкостью быть нилом, но при этом получаешь доступ к ней с помощью небезопасного force unwrapping = chartView.show(percentage!
     var percentage: Int?
     
     override func viewDidLoad() {
@@ -78,6 +82,7 @@ class ChartSlideViewController : UIViewController {
         animationPlayed = true
         
         dropView.animateDrop(0.0)
+        ///опасность краша!
         chartView.show(percentage!, delay: 0.9)
         animatePercentageLabel(0.9)
         descriptionView.animate(2.7)
@@ -89,8 +94,14 @@ class ChartSlideViewController : UIViewController {
         
         tween.timingFunction = CAMediaTimingFunction(controlPoints: 0.0, 0.4, 0.4, 1.0)
 
+        /// сигнатура замыкания должна быть на одной строке с первой скобкой
         tween.mapper = {
             animatable in
+            ///не рекомендуется писать if в одну строку всегда лучше
+            /* if (animatable == 0) {
+            return ""
+        } */
+            ///стремный ретурн какой-то
             if (animatable == 0) {return ""}
             return String(format: "%0.f%%", animatable)
         }

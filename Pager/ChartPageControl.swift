@@ -8,15 +8,22 @@
 
 import UIKit
 
+///для протокола тоже желательно оставлять пустую строку снизу и сверху
 protocol ChartPageControlDelegate {
+    /// пробел обязателен после названия аргумента
     func pageControlDidSelectButton(index:Int)
 }
 
 class ChartPageControl: UIView {
+    /// два пробела после var
+    ///странный делегат который нигде не используется и судя по-всему он должен быть объявлен как Implicitly Unwrapped Optional = var delegate: ChartPageControlDelegate!
     var  delegate: ChartPageControlDelegate?
-    
+    /// рекомендована сокращенная запись private var buttons = [UIView]()
+    ///можно даже было не создавать массив, а только объявить переменную private var buttons: [UIView]?
+    /// и иницилизировать массив только если pageCount > 0
     private var buttons: [UIView] = []
     
+    ///избыточное указание типа
     var pagesCount: Int = 0 {
         didSet {
             layoutButtons()
@@ -29,7 +36,9 @@ class ChartPageControl: UIView {
         }
         
         for button in buttons {
-            button.backgroundColor = UIColor(red: 185 / 255.0, green: 185 / 255.0, blue: 185 / 255.0, alpha: 1.0)
+            ///можно сделать экстеншен на UIColor чтобы не писать постоянно / 255
+            /// .0 излишняя запись - Swift всегда делит правильно
+            button.backgroundColor = UIColor(red: 185 / 255, green: 185 / 255.0, blue: 185 / 255.0, alpha: 1.0)
 
         }
         buttons[index].backgroundColor = UIColor(red: 50 / 255.0, green: 50 / 255.0, blue: 50 / 255.0, alpha: 1.0)

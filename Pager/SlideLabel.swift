@@ -18,6 +18,8 @@ class SlideLabelView: UIView {
         label.font = UIFont(name: "HelveticaNeue-Medium", size: 16.0)
         return label
     }()
+    
+    ///лучше не писать в одну строку
     var text: String? {
         set {label.text = newValue}
         get {return label.text}
@@ -32,10 +34,12 @@ class SlideLabelView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         label.frame = bounds
+        ///magic numbers
         label.ac_trimLeft(40.0)
         label.ac_trimRight(40.0)
     }
     
+    ///было бы неплохо показывать имя аргумента, чтобы понять что ты передаешь - func animate (#delay: NSTimeInterval)
     func animate (delay: NSTimeInterval) {
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
 

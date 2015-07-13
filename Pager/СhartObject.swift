@@ -8,6 +8,7 @@
 
 import UIKit
 
+///опять же рекомендую структуру вместо класса
 class ChartObject {
     var color: UIColor?
     var percentage: Int?
