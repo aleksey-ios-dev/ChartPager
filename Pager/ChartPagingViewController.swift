@@ -18,11 +18,12 @@ protocol ChartPagingViewControllerDataSource {
     func chartThickness () -> CGFloat
 }
 
-class ChartPagingViewController : UIViewController, ChartPageControlDelegate {
-    var chartDataSource: ChartPagingViewControllerDataSource?
+class ChartPagingViewController : UIViewController {
+    var chartDataSource: ChartPagingViewControllerDataSource!
 
     @IBOutlet weak var pageViewContainer: UIView!
     @IBOutlet weak var pageControl: ChartPageControl!
+    
     
     private var pageViewController: UIPageViewController = {
         let controller = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options:nil)
@@ -35,45 +36,33 @@ class ChartPagingViewController : UIViewController, ChartPageControlDelegate {
         
         pageViewController.view.backgroundColor = UIColor.clearColor()
         pageViewContainer.tlk_addSubview(pageViewController.view, options: TLKAppearanceOptions.Overlay)
-        if let number = chartDataSource?.numberOfPages() {
-            pageControl.pagesCount = number
-            pageControl.selectButton(0)
-        }
-        
-        pageControl.delegate = self
+        pageControl.pagesCount = chartDataSource.numberOfPages()
+        pageControl.selectButton(0)
+        reloadData()
     }
     
     func reloadData() {
         pageViewController.ac_setDidFinishTransition({ (pageController, viewController, idx) -> Void in
-            self.pageControl?.selectButton(Int(idx))
+            self.pageControl.selectButton(Int(idx))
             let slide = viewController as! ChartSlideViewController
             slide.animate()
         })
+        
         var pages: [UIViewController] = Array()
         
-        if let dataSource = chartDataSource {
-            for idx in 0..<dataSource.numberOfPages() {
-                let vc = ChartSlideViewController(nibName:"ChartSlideViewController", bundle: nil)
-                let ame = vc.view.frame
-                vc.chartTitle = dataSource.titleForPage(idx)
-                vc.chartColor = dataSource.colorForPage(idx)
-                vc.chartDescription = dataSource.descriptionForPage(idx)
-                vc.percentage = dataSource.percentageForPage(idx)
-                vc.logoImage = dataSource.logoForPage(idx)
-                vc.chartThickness = dataSource.chartThickness()
-                pages.append(vc)
-            }
-            
-            if (self.pageControl != nil) {
-                pageControl.selectButton(0)
-            }
+        for idx in 0..<chartDataSource.numberOfPages() {
+            let vc = ChartSlideViewController(nibName:"ChartSlideViewController", bundle: nil)
+            let ame = vc.view.frame
+            vc.chartTitle = chartDataSource.titleForPage(idx)
+            vc.chartColor = chartDataSource.colorForPage(idx)
+            vc.chartDescription = chartDataSource.descriptionForPage(idx)
+            vc.percentage = chartDataSource.percentageForPage(idx)
+            vc.logoImage = chartDataSource.logoForPage(idx)
+            vc.chartThickness = chartDataSource.chartThickness()
+            pages.append(vc)
+
+            pageControl.selectButton(0)
             pageViewController.ac_setViewControllers(pages)
         }
-    }
-    
-    //ChartPageControlDelegate
-    
-    func pageControlDidSelectButton(index: Int) {
-        pageViewController.ac_showPage(index)
     }
 }

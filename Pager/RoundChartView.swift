@@ -9,13 +9,13 @@
 import Foundation
 
 class RoundChartView : UIView {
-    var chartThickness: CGFloat = 0.0 {
+    var chartThickness: CGFloat = 0 {
         didSet {
             greyChart.lineWidth = chartThickness
             colorChart.lineWidth = chartThickness
         }
     }
-    let easeOut = CAMediaTimingFunction(controlPoints: 0.0, 0.4, 0.4, 1.0)
+    let easeOut = CAMediaTimingFunction(controlPoints: 0, 0.4, 0.4, 1)
 
     
     private let greyChart: CAShapeLayer = {
@@ -24,7 +24,7 @@ class RoundChartView : UIView {
         circle.lineCap = kCALineCapRound
         circle.fillColor = UIColor.clearColor().CGColor
         circle.strokeColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).CGColor
-        circle.strokeEnd = 0.0
+        circle.strokeEnd = 0
         return circle
         }()
     
@@ -33,7 +33,7 @@ class RoundChartView : UIView {
         circle.position = CGPointZero
         circle.lineCap = kCALineCapRound
         circle.fillColor = UIColor.clearColor().CGColor
-        circle.strokeEnd = 0.0
+        circle.strokeEnd = 0
         circle.strokeColor = UIColor.redColor().CGColor
         return circle
         }()
@@ -56,16 +56,16 @@ class RoundChartView : UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let path: CGPath = UIBezierPath(roundedRect: bounds, cornerRadius: frame.size.width / 2.0).CGPath
+        let path: CGPath = UIBezierPath(roundedRect: bounds, cornerRadius: frame.size.width / 2).CGPath
         colorChart.path = path
         greyChart.path = path
     }
     
     
-    func show(percentage: Int, delay: NSTimeInterval) {
+    func show(#percentage: Int, delay: NSTimeInterval) {
         let showTime: NSTimeInterval = 0.8
     
-        let colorChartShow = animation(percentage, duration: 0.6, timingFunction:easeOut)
+        let colorChartShow = animation(percentage, duration: 0.6, timingFunction: easeOut)
         colorChartShow.beginTime = delay
         
         let splashDuration: NSTimeInterval = 0.2
@@ -104,10 +104,10 @@ class RoundChartView : UIView {
     }
 
     func animation(percentage: Int, duration: NSTimeInterval, timingFunction:CAMediaTimingFunction) -> CABasicAnimation {
-        let maxValue: Float = Float(percentage) / 100.0
+        let maxValue: Float = Float(percentage) / 100
         let animation: CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
         animation.duration = duration
-        animation.repeatCount = 1.0
+        animation.repeatCount = 1
         animation.toValue = maxValue
         animation.fillMode = kCAFillModeForwards
         animation.removedOnCompletion = false

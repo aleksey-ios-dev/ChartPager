@@ -8,14 +8,9 @@
 
 import UIKit
 
-protocol ChartPageControlDelegate {
-    func pageControlDidSelectButton(index:Int)
-}
-
 class ChartPageControl: UIView {
-    var  delegate: ChartPageControlDelegate?
-    
-    private var buttons: [UIView] = []
+
+    private var buttons = [UIView]()
     
     var pagesCount: Int = 0 {
         didSet {
@@ -29,10 +24,9 @@ class ChartPageControl: UIView {
         }
         
         for button in buttons {
-            button.backgroundColor = UIColor(red: 185 / 255.0, green: 185 / 255.0, blue: 185 / 255.0, alpha: 1.0)
-
+            button.backgroundColor = UIColor(red: 185 / 255, green: 185 / 255, blue: 185 / 255, alpha: 1)
         }
-        buttons[index].backgroundColor = UIColor(red: 50 / 255.0, green: 50 / 255.0, blue: 50 / 255.0, alpha: 1.0)
+        buttons[index].backgroundColor = UIColor(red: 50 / 255, green: 50 / 255, blue: 50 / 255, alpha: 1)
     }
     
     private func layoutButtons () {
@@ -46,15 +40,15 @@ class ChartPageControl: UIView {
             return
         }
         
-        let buttonWidth: CGFloat = 10.0
-        let gapWidth: CGFloat = 8.0
+        let buttonWidth: CGFloat = 10
+        let gapWidth: CGFloat = 8
         let count: CGFloat = CGFloat(pagesCount)
-        let totalWidth: CGFloat = buttonWidth * count + gapWidth * (count - 1.0)
-        var startX: CGFloat = (frame.size.width - totalWidth) / 2.0
+        let totalWidth: CGFloat = buttonWidth * count + gapWidth * (count - 1)
+        var startX: CGFloat = (frame.size.width - totalWidth) / 2
         for i in 0..<pagesCount {
             let button = UIButton(frame: CGRect(x: startX, y: 0, width: buttonWidth, height: buttonWidth))
-            button.backgroundColor = UIColor(red: 50 / 255.0, green: 50 / 255.0, blue: 50 / 255.0, alpha: 1.0)
-            button.layer.cornerRadius = buttonWidth / 2.0
+            button.backgroundColor = UIColor(red: 50 / 255, green: 50 / 255, blue: 50 / 255, alpha: 1)
+            button.layer.cornerRadius = buttonWidth / 2
             button.layer.masksToBounds = true
             button.tag = i
             self.addSubview(button)

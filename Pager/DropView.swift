@@ -9,20 +9,26 @@
 import Foundation
 
 class DropView : UIView {
-    var chartThickness: CGFloat = 0.0
+    var chartThickness: CGFloat = 0
     var logo: UIImage {
-        set {logoImageView.image = newValue
-        logoImageView.frame = CGRect(x: 0.0, y: 0.0, width: newValue.size.width, height: newValue.size.height)}
-        get {return logoImageView.image!}
+        set {
+            logoImageView.image = newValue
+            logoImageView.frame = CGRect(x: 0.0, y: 0.0, width: newValue.size.width, height: newValue.size.height)
+        }
+        get {
+            return logoImageView.image!
+        }
     }
     let fallEaseIn = CAMediaTimingFunction(controlPoints: 0.4, 0.0, 1.0, 0.4)
     let fallEaseOut = CAMediaTimingFunction(controlPoints: 0.0, 0.4, 0.4, 1.0)
     let logoImageView: UIImageView = UIImageView()
 
-    var color: UIColor { set {
+    var color: UIColor {
+        set {
             drop.fillColor = newValue.CGColor
             logoImageView.tintColor = newValue
-        } get {
+        }
+        get {
             return UIColor(CGColor: drop.fillColor)!
         }
     }
@@ -42,12 +48,12 @@ class DropView : UIView {
          logoImageView.frame = CGRect(x: (bounds.width - 30.0) / 2.0, y: -chartThickness, width: 30.0, height: 30.0)
     }
     
-    func animateDrop (delay: NSTimeInterval) {
+    func animateDrop (#delay: NSTimeInterval) {
         self.layer.addSublayer(drop)
         
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
         
-        dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
+        dispatch_after(time, dispatch_get_main_queue()) {
             self.performDropAnimation()
         }
     }
@@ -84,7 +90,7 @@ class DropView : UIView {
         drop.addAnimation(dropSmash, forKey: "smash")
     }
     
-    func animateLogo (delay: NSTimeInterval) {
+    func animateLogo (#delay: NSTimeInterval) {
         logoImageView.layer.removeAllAnimations()
         logoImageView.layer.transform = CATransform3DMakeScale(0.0, 0.0, 0.0)
         
