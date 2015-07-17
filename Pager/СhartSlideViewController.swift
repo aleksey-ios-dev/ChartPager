@@ -8,8 +8,7 @@
 
 import UIKit
 
-///двоеточие слитно с названием текущего класса
-class ChartSlideViewController : UIViewController {
+class ChartSlideViewController: UIViewController {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionView: SlideLabelView!
     @IBOutlet private weak var percentageLabel: UILabel!
@@ -20,55 +19,39 @@ class ChartSlideViewController : UIViewController {
     
     private var animationPlayed = false
     
-    ///не нужно везде 0.0 писать :)
-    var chartThickness: CGFloat = 0.0 {
+    var chartThickness: CGFloat = 0 {
         didSet {
             dropView.chartThickness = chartThickness
             chartView.chartThickness = chartThickness
         }
     }
-    
-    ///get со следующей строки
-    var chartColor: UIColor? { get {
-            return percentageLabel.textColor
+
+    var chartColor: UIColor = UIColor.blueColor() {
+        didSet {
+            chartView.chartColor = chartColor
+            dropView.color = chartColor
         }
-        set {
-            chartView.chartColor = newValue!
-            dropView.color = newValue!
+    }
+
+    var chartTitle: String = "" {
+        didSet {
+            titleLabel.text = chartTitle
         }
     }
     
-    var chartTitle: String? {
-        get {
-            return titleLabel.text
-        }
-        set {
-            if let value = newValue {
-                titleLabel.text = newValue
-            }
+    var chartDescription: String = "" {
+        didSet {
+            descriptionView.text = chartDescription
         }
     }
     
-    var chartDescription: String? {
-        get {
-            return descriptionView.text
-        }
-        set {
-            descriptionView.text = newValue
+    var logoImage: UIImage = UIImage() {
+        didSet {
+           dropView.logo = logoImage.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         }
     }
     
-    var logoImage: UIImage? {
-        get {
-         return dropView.logo
-        }
-        set {
-            dropView.logo = newValue!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        }
-    }
-    
-    ///странные дела с этой переменной- ты ее объявил как такую которая может с легкостью быть нилом, но при этом получаешь доступ к ней с помощью небезопасного force unwrapping = chartView.show(percentage!
-    var percentage: Int?
+    var percentage: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,32 +63,22 @@ class ChartSlideViewController : UIViewController {
     func animate () {
         if animationPlayed {return}
         animationPlayed = true
-        
-        dropView.animateDrop(0.0)
-        ///опасность краша!
-        chartView.show(percentage!, delay: 0.9)
-        animatePercentageLabel(0.9)
-        descriptionView.animate(2.7)
-        dropView.animateLogo(2.7)
+        dropView.animateDrop(delay: 0)
+        chartView.show(percentage: percentage, delay: 0.9)
+        animatePercentageLabel(delay: 0.9)
+        descriptionView.animate(delay: 2.7)
+        dropView.animateLogo(delay: 2.7)
     }
     
-    func animatePercentageLabel (delay: Double) {
-        let tween: YALTween = YALTween (object: self.percentageLabel, key: "text", range: NSMakeRange(0, percentage!), duration: 0.5)
-        
-        tween.timingFunction = CAMediaTimingFunction(controlPoints: 0.0, 0.4, 0.4, 1.0)
-
-        /// сигнатура замыкания должна быть на одной строке с первой скобкой
-        tween.mapper = {
-            animatable in
-            ///не рекомендуется писать if в одну строку всегда лучше
-            /* if (animatable == 0) {
-            return ""
-        } */
-            ///стремный ретурн какой-то
-            if (animatable == 0) {return ""}
+    func animatePercentageLabel (#delay: Double) {
+        let tween: YALTween = YALTween (object: self.percentageLabel, key: "text", range: NSMakeRange(0, percentage), duration: 0.5)
+        tween.timingFunction = CAMediaTimingFunction(controlPoints: 0, 0.4, 0.4, 1)
+        tween.mapper = { animatable in
+            if (animatable == 0) {
+                return ""
+            }
             return String(format: "%0.f%%", animatable)
         }
-        
         tween.startWithDelay(delay);
     }
 }

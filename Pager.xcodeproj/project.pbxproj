@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5B17C2CA1B00C973005F1C11 /* ChartPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B17C2C91B00C973005F1C11 /* ChartPageControl.swift */; };
-		5B17C2CE1B00CA68005F1C11 /* ACXibInstantiatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B17C2CD1B00CA68005F1C11 /* ACXibInstantiatedView.m */; };
 		5B6BBF511B00AF44003E327E /* ChartPagingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B6BBF501B00AF44003E327E /* ChartPagingViewController.xib */; };
 		5B6BBF551B00BF86003E327E /* UIView+TLKAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6BBF541B00BF86003E327E /* UIView+TLKAppearance.m */; };
 		5BA65C5C1AFC7C8B00297DC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C5B1AFC7C8B00297DC8 /* AppDelegate.swift */; };
@@ -25,7 +24,6 @@
 		5BA65C921AFF6B7000297DC8 /* СhartObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C911AFF6B7000297DC8 /* СhartObject.swift */; };
 		5BA65C941AFF709100297DC8 /* Objects.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BA65C931AFF709100297DC8 /* Objects.plist */; };
 		5BA65C981AFF7E6300297DC8 /* UIColor+HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA65C971AFF7E6300297DC8 /* UIColor+HexColors.m */; };
-		5BC035681B11E21B0079AE90 /* Tween.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC035671B11E21B0079AE90 /* Tween.swift */; };
 		5BCF62D91B25B7A2007705E9 /* UILabel + Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF62D81B25B7A2007705E9 /* UILabel + Animation.swift */; };
 		5BF71F961B4BCA7700F66B5B /* RoundChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF71F951B4BCA7700F66B5B /* RoundChartView.swift */; };
 		5BF71F991B4D0A2000F66B5B /* DropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF71F981B4D0A2000F66B5B /* DropView.swift */; };
@@ -47,8 +45,6 @@
 
 /* Begin PBXFileReference section */
 		5B17C2C91B00C973005F1C11 /* ChartPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPageControl.swift; sourceTree = "<group>"; };
-		5B17C2CC1B00CA68005F1C11 /* ACXibInstantiatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACXibInstantiatedView.h; sourceTree = "<group>"; };
-		5B17C2CD1B00CA68005F1C11 /* ACXibInstantiatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACXibInstantiatedView.m; sourceTree = "<group>"; };
 		5B6BBF501B00AF44003E327E /* ChartPagingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartPagingViewController.xib; sourceTree = "<group>"; };
 		5B6BBF531B00BF86003E327E /* UIView+TLKAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TLKAppearance.h"; sourceTree = "<group>"; };
 		5B6BBF541B00BF86003E327E /* UIView+TLKAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TLKAppearance.m"; sourceTree = "<group>"; };
@@ -74,7 +70,6 @@
 		5BA65C931AFF709100297DC8 /* Objects.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Objects.plist; sourceTree = "<group>"; };
 		5BA65C961AFF7E6300297DC8 /* UIColor+HexColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColors.h"; sourceTree = "<group>"; };
 		5BA65C971AFF7E6300297DC8 /* UIColor+HexColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColors.m"; sourceTree = "<group>"; };
-		5BC035671B11E21B0079AE90 /* Tween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tween.swift; sourceTree = "<group>"; };
 		5BCF62D81B25B7A2007705E9 /* UILabel + Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel + Animation.swift"; sourceTree = "<group>"; };
 		5BF71F951B4BCA7700F66B5B /* RoundChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundChartView.swift; sourceTree = "<group>"; };
 		5BF71F981B4D0A2000F66B5B /* DropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropView.swift; sourceTree = "<group>"; };
@@ -110,15 +105,6 @@
 				5B17C2C91B00C973005F1C11 /* ChartPageControl.swift */,
 			);
 			name = "Page Control";
-			sourceTree = "<group>";
-		};
-		5B17C2CB1B00CA5B005F1C11 /* Xib Instantiated View */ = {
-			isa = PBXGroup;
-			children = (
-				5B17C2CC1B00CA68005F1C11 /* ACXibInstantiatedView.h */,
-				5B17C2CD1B00CA68005F1C11 /* ACXibInstantiatedView.m */,
-			);
-			name = "Xib Instantiated View";
 			sourceTree = "<group>";
 		};
 		5B6BBF521B00BF77003E327E /* UIView + TLKAppearance */ = {
@@ -182,7 +168,6 @@
 			children = (
 				5BFFF74B1B4F9246006A0B79 /* Tween */,
 				5BF71F9F1B4D695200F66B5B /* UIView + ACFrames */,
-				5B17C2CB1B00CA5B005F1C11 /* Xib Instantiated View */,
 				5BA65C951AFF7E3E00297DC8 /* UIColor + HEX */,
 				5B6BBF521B00BF77003E327E /* UIView + TLKAppearance */,
 				5BA65C871AFC83F500297DC8 /* Page Controller */,
@@ -205,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				5BCF62D71B25B698007705E9 /* Categories */,
-				5BC035661B11E1E90079AE90 /* Tween */,
 				5B17C2C81B00C912005F1C11 /* Page Control */,
 				5BA65C901AFF697500297DC8 /* ChartObject */,
 				5BA65C7F1AFC82C700297DC8 /* Derived */,
@@ -270,14 +254,6 @@
 				5BA65C971AFF7E6300297DC8 /* UIColor+HexColors.m */,
 			);
 			name = "UIColor + HEX";
-			sourceTree = "<group>";
-		};
-		5BC035661B11E1E90079AE90 /* Tween */ = {
-			isa = PBXGroup;
-			children = (
-				5BC035671B11E21B0079AE90 /* Tween.swift */,
-			);
-			name = Tween;
 			sourceTree = "<group>";
 		};
 		5BCF62D71B25B698007705E9 /* Categories */ = {
@@ -446,12 +422,10 @@
 			files = (
 				5BA65C7C1AFC7E1300297DC8 /* ChartPagingViewController.swift in Sources */,
 				5BFFF74E1B4F9264006A0B79 /* YALTween.m in Sources */,
-				5BC035681B11E21B0079AE90 /* Tween.swift in Sources */,
 				5BF71F961B4BCA7700F66B5B /* RoundChartView.swift in Sources */,
 				5BF71F9B1B4D274600F66B5B /* CAAnimationGroup + Sequence.swift in Sources */,
 				5BA65C831AFC82E300297DC8 /* ACPageController.m in Sources */,
 				5BA65C5E1AFC7C8B00297DC8 /* ViewController.swift in Sources */,
-				5B17C2CE1B00CA68005F1C11 /* ACXibInstantiatedView.m in Sources */,
 				5B6BBF551B00BF86003E327E /* UIView+TLKAppearance.m in Sources */,
 				5BA65C5C1AFC7C8B00297DC8 /* AppDelegate.swift in Sources */,
 				5BA65C861AFC83F000297DC8 /* UIPageViewController+ACPageController.m in Sources */,

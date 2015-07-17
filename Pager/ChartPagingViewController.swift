@@ -18,12 +18,8 @@ protocol ChartPagingViewControllerDataSource {
     func chartThickness () -> CGFloat
 }
 
-///согласно пока неутвержденному кодестайлу рекомендуется оборачивать каждую реализацию интерфейса в екстеншен в том же файле
-///это дает прозрачность и структурированность кода
-///extension ChartPagingViewController: ChartPageControlDelegate
-class ChartPagingViewController : UIViewController, ChartPageControlDelegate {
-    ///не уверен что без дата сорса контроллер имеет смысл, может лучше var chartDataSource: ChartPagingViewControllerDataSource!
-    var chartDataSource: ChartPagingViewControllerDataSource?
+class ChartPagingViewController : UIViewController {
+    var chartDataSource: ChartPagingViewControllerDataSource!
 
     @IBOutlet weak var pageViewContainer: UIView!
     @IBOutlet weak var pageControl: ChartPageControl!
@@ -40,49 +36,33 @@ class ChartPagingViewController : UIViewController, ChartPageControlDelegate {
         
         pageViewController.view.backgroundColor = UIColor.clearColor()
         pageViewContainer.tlk_addSubview(pageViewController.view, options: TLKAppearanceOptions.Overlay)
-        if let number = chartDataSource?.numberOfPages() {
-            pageControl.pagesCount = number
-            pageControl.selectButton(0)
-        }
-        
-        pageControl.delegate = self
+        pageControl.pagesCount = chartDataSource.numberOfPages()
+        pageControl.selectButton(0)
+        reloadData()
     }
     
     func reloadData() {
         pageViewController.ac_setDidFinishTransition({ (pageController, viewController, idx) -> Void in
-            ///PageControl вроде как всегда существует зачем chaining?
-            self.pageControl?.selectButton(Int(idx))
+            self.pageControl.selectButton(Int(idx))
             let slide = viewController as! ChartSlideViewController
             slide.animate()
         })
-        ///короче var pages = [UIViewController]()
+        
         var pages: [UIViewController] = Array()
         
-        if let dataSource = chartDataSource {
-            for idx in 0..<dataSource.numberOfPages() {
-                let vc = ChartSlideViewController(nibName:"ChartSlideViewController", bundle: nil)
-                let ame = vc.view.frame
-                vc.chartTitle = dataSource.titleForPage(idx)
-                vc.chartColor = dataSource.colorForPage(idx)
-                vc.chartDescription = dataSource.descriptionForPage(idx)
-                vc.percentage = dataSource.percentageForPage(idx)
-                vc.logoImage = dataSource.logoForPage(idx)
-                vc.chartThickness = dataSource.chartThickness()
-                pages.append(vc)
-            }
-            
-            ///чо ж такое с этим контролом - аутлет же вроде куда ему дется
-            if (self.pageControl != nil) {
-                ///тоже название параметра не помешает
-                pageControl.selectButton(0)
-            }
+        for idx in 0..<chartDataSource.numberOfPages() {
+            let vc = ChartSlideViewController(nibName:"ChartSlideViewController", bundle: nil)
+            let ame = vc.view.frame
+            vc.chartTitle = chartDataSource.titleForPage(idx)
+            vc.chartColor = chartDataSource.colorForPage(idx)
+            vc.chartDescription = chartDataSource.descriptionForPage(idx)
+            vc.percentage = chartDataSource.percentageForPage(idx)
+            vc.logoImage = chartDataSource.logoForPage(idx)
+            vc.chartThickness = chartDataSource.chartThickness()
+            pages.append(vc)
+
+            pageControl.selectButton(0)
             pageViewController.ac_setViewControllers(pages)
         }
-    }
-    
-    //ChartPageControlDelegate
-    
-    func pageControlDidSelectButton(index: Int) {
-        pageViewController.ac_showPage(index)
     }
 }

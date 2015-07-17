@@ -19,25 +19,13 @@ class ViewController: UIViewController, ChartPagingViewControllerDataSource {
         let contents = NSArray(contentsOfFile: filePath!)! as Array
         
         for dictionary in contents {
-            let object = ChartObject()
-            if let title: String = dictionary["title"] as? String {
-                object.title = title
-            }
             
-            if let description: String = dictionary["description"] as? String {
-                object.description = description
-            }
-            if let colorString: String = dictionary["color"] as? String {
-                object.color = UIColor(hexString: colorString)
-            }
-            
-            if let percentage: Int = dictionary["percentage"] as? Int {
-                object.percentage = percentage
-            }
-            
-            if let logoName: String = dictionary["logoName"] as? String {
-                object.logoImage = UIImage(named: logoName)
-            }
+            let color = UIColor(hexString: dictionary["color"] as! String)
+            let percentage = dictionary["percentage"] as! Int
+            let title = dictionary["title"] as! String
+            let description = dictionary["description"] as! String
+            let logoName = dictionary["logoName"] as! String
+            let object: ChartObject = ChartObject(color: color, percentage: percentage, title: title, description: description, logoImage: UIImage(named: logoName)!)
             
             objects.append(object)
         }
@@ -48,7 +36,6 @@ class ViewController: UIViewController, ChartPagingViewControllerDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         pageViewController.chartDataSource = self
-        pageViewController.reloadData()
         pageViewController.view.frame = self.view.frame
         self.addChildViewController(pageViewController)
         self.view.tlk_addSubview(pageViewController.view, options: TLKAppearanceOptions.Overlay)
@@ -61,24 +48,23 @@ class ViewController: UIViewController, ChartPagingViewControllerDataSource {
     }
     
     func colorForPage(index: Int) -> UIColor {
-        return objects[index].color!
+        return objects[index].color
     }
     
     func percentageForPage(index: Int) -> Int {
-        return objects[index].percentage!
+        return objects[index].percentage
     }
     
     func titleForPage(index: Int) -> String {
-        ///это краш, если нет тайтла -значит либо тайтл всегда дожен быть либо должна быть проверка
-        return objects[index].title!
+        return objects[index].title
     }
     
     func descriptionForPage(index: Int) -> String {
-        return objects[index].description!
+        return objects[index].description
     }
     
     func logoForPage(index: Int) -> UIImage {
-        return objects[index].logoImage!
+        return objects[index].logoImage
     }
     
     func chartThickness() -> CGFloat {
