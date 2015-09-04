@@ -17,7 +17,6 @@ class RoundChartView : UIView {
         }
     }
     let easeOut = CAMediaTimingFunction(controlPoints: 0, 0.4, 0.4, 1)
-
     
     private let greyChart: CAShapeLayer = {
         let circle: CAShapeLayer = CAShapeLayer()
