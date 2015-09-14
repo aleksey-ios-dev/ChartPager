@@ -16,7 +16,6 @@
       <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Categories/CAAnimationGroup + Sequence.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Categories/UIView+ACFrames.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Categories/UIView+ACFrames.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Various/AssociatedObjectGlue.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Various/Tween/Tween.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Various/Tween/TweenLayer.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Vendors/ACPageController/ACPageController.h" isTestSource="false" />

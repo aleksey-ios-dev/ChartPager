@@ -64,7 +64,6 @@
 		5B6684261B94631A00416AC3 /* SlideLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideLabel.swift; sourceTree = "<group>"; };
 		5B6684341B9466EF00416AC3 /* ChartPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPageControl.swift; sourceTree = "<group>"; };
 		5B6684371B94687700416AC3 /* Objects.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Objects.plist; sourceTree = "<group>"; };
-		C949798AD0D3837887C26567 /* AssociatedObjectGlue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssociatedObjectGlue.h; sourceTree = "<group>"; };
 		C9497D230CABD9C0171CBC99 /* Tween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tween.swift; sourceTree = "<group>"; };
 		C9497FA9D2A94CE2F66AAE8D /* TweenLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,7 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				5B6684101B94631A00416AC3 /* Tween */,
-				C9497121A252831EE8DB5749 /* Associated Object */,
 			);
 			path = Various;
 			sourceTree = "<group>";
@@ -270,14 +268,6 @@
 				5B6684371B94687700416AC3 /* Objects.plist */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		C9497121A252831EE8DB5749 /* Associated Object */ = {
-			isa = PBXGroup;
-			children = (
-				C949798AD0D3837887C26567 /* AssociatedObjectGlue.h */,
-			);
-			name = "Associated Object";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
