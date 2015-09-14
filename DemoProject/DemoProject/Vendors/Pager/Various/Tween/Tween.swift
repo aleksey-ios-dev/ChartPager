@@ -9,13 +9,13 @@
 import Foundation
 
 class Tween : CALayer {
-    dynamic var animatable: CGFloat = 2
+    @NSManaged var animatable: CGFloat
     var object: AnyObject
     var key: String
     var from: CGFloat
     var to: CGFloat
     var delay: NSTimeInterval = 0.0
-    var tweenDuration: NSTimeInterval
+    var tweenDuration: NSTimeInterval = 0.5
     var timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
     var mapper: ((value: CGFloat) -> (AnyObject))?
 
@@ -29,15 +29,15 @@ class Tween : CALayer {
         super.init()
     }
 
-//    override init(layer: AnyObject!) {
-//        let tweenLayer = layer as! Tween
-//        object = tweenLayer.object
-//        key = tweenLayer.key
-//        from = tweenLayer.from
-//        to = tweenLayer.to
-//        tweenDuration = tweenLayer.duration
-//        super.init(layer: layer)
-//    }
+    override init(layer: AnyObject!) {
+        let tweenLayer = layer as! Tween
+        object = tweenLayer.object
+        key = tweenLayer.key
+        from = tweenLayer.from
+        to = tweenLayer.to
+        tweenDuration = tweenLayer.duration
+        super.init(layer: layer)
+    }
 
     convenience init (object: AnyObject, key: String, to: CGFloat) {
         self.init(object: object, key: key, from: 0.0, to: to, duration: 0.5)
@@ -57,41 +57,36 @@ class Tween : CALayer {
         }
         let animation = CABasicAnimation(keyPath: event)
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        animation.fromValue = 4 as NSNumber
-//        animation.toValue = to
+        animation.fromValue = from
+        animation.toValue = to
         animation.duration = tweenDuration
-//        animation.beginTime = CACurrentMediaTime() + delay
-//        animation.delegate = self
+        animation.beginTime = CACurrentMediaTime() + delay
+        animation.delegate = self
 
         return animation;
     }
 
-//    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
-//        self.removeFromSuperlayer()
-//    }
+    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+        self.removeFromSuperlayer()
+    }
 
     override func display() {
-        print("DISPLAY")
-//        let value = presentationLayer()?.animatable
+        if let value = presentationLayer()?.animatable {
+            if let mapper = mapper {
+                object.setValue(mapper(value: value), forKey: key)
+            } else {
+                object.setValue(value, forKey: key)
 
-//    if self.presentationLayer() != nil {
-//
+            }
+        }
     }
-//            if let mapper = mapper {
-//                object.setValue(mapper(value: presentationLayer().animatable), forKey: key)
-//            } else {
-//                object.setValue(presentationLayer.animatable, forKey: key)
-//            }
-//        }
-//    }
 
     func start () {
         animatable = to
         (object as! UIView).layer.addSublayer(self)
-//        UIApplication.sharedApplication().delegate?.window??.rootViewController?.view.layer.addSublayer(self)
     }
 
-    func start(delay: NSTimeInterval) {
+    func start(#delay: NSTimeInterval) {
         self.delay = delay
         start()
     }
