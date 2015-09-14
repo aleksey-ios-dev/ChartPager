@@ -69,18 +69,16 @@ class ChartSlideViewController: UIViewController {
         descriptionView.animate(delay: 2.7)
         dropView.animateLogo(delay: 2.7)
     }
-    
+
+
     func animatePercentageLabel (#delay: NSTimeInterval) {
-        let tween: Tween = Tween(object: self.percentageLabel, key: "text", to: CGFloat(percentage))
+        let tween = Tween(object: percentageLabel, key: "text", to: CGFloat(percentage))
         tween.timingFunction = CAMediaTimingFunction(controlPoints: 0, 0.4, 0.4, 1)
-        tween.mapper = { animatable in
-            if (animatable == 0) {
-                return ""
-            }
-            return String(format: "%0.f%%", animatable)
+        tween.mapper = { value in
+            return value == 0 ? "" : String(format: "%0.f%%", value)
         }
-        
-    tween.start(delay: delay)
+
+        tween.start(delay: delay)
     }
 }
 

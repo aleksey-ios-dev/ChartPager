@@ -1,93 +1,72 @@
 //
-//  Tween.swift
-//  Pager
-//
-//  Created by aleksey on 13.07.15.
-//  Copyright (c) 2015 Aleksey Chernish. All rights reserved.
+// Created by aleksey on 14.09.15.
+// Copyright (c) 2015 aleksey chernish. All rights reserved.
 //
 
 import Foundation
 
-class Tween : CALayer {
-    @NSManaged var animatable: CGFloat
-    var object: AnyObject
-    var key: String
-    var from: CGFloat
-    var to: CGFloat
-    var delay: NSTimeInterval = 0.0
-    var tweenDuration: NSTimeInterval = 0.5
-    var timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+class Tween {
+    private weak var layer: TweenLayer!
+
+    private(set) var object: UIView?
+
+    let key: String
+
+    var timingFunction: CAMediaTimingFunction {
+        set {
+            layer.timingFunction = newValue
+        }
+        get {
+            return layer.timingFunction
+        }
+    }
+
     var mapper: ((value: CGFloat) -> (AnyObject))?
 
-    init (object: AnyObject, key: String, from: CGFloat, to: CGFloat, duration: NSTimeInterval) {
+    init (object: UIView, key: String, from: CGFloat, to: CGFloat, duration: NSTimeInterval) {
         self.object = object
-        self.from = from
-        self.to = to
-        self.tweenDuration = duration
         self.key = key
 
-        super.init()
+        layer = {
+            let layer = TweenLayer()
+            object.layer.addSublayer(layer)
+            layer.from = from
+            layer.to = to
+            layer.tweenDuration = duration
+            layer.tween = self
+
+            return layer
+        }()
     }
 
-    override init(layer: AnyObject!) {
-        let tweenLayer = layer as! Tween
-        object = tweenLayer.object
-        key = tweenLayer.key
-        from = tweenLayer.from
-        to = tweenLayer.to
-        tweenDuration = tweenLayer.duration
-        super.init(layer: layer)
+    convenience init (object: UIView, key: String, to: CGFloat) {
+        self.init(object: object, key: key, from: 0, to: to, duration: 0.5)
     }
 
-    convenience init (object: AnyObject, key: String, to: CGFloat) {
-        self.init(object: object, key: key, from: 0.0, to: to, duration: 0.5)
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override class func needsDisplayForKey(event: String) -> Bool {
-        return event == "animatable" ? true : super.needsDisplayForKey(event)
-    }
-
-    override func actionForKey(event: String!) -> CAAction! {
-        if event != "animatable" {
-            return super.actionForKey(event)
+    func start() {
+        if let object = self.object {
+            layer.startAnimation()
         }
-        let animation = CABasicAnimation(keyPath: event)
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        animation.fromValue = from
-        animation.toValue = to
-        animation.duration = tweenDuration
-        animation.beginTime = CACurrentMediaTime() + delay
-        animation.delegate = self
-
-        return animation;
-    }
-
-    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
-        self.removeFromSuperlayer()
-    }
-
-    override func display() {
-        if let value = presentationLayer()?.animatable {
-            if let mapper = mapper {
-                object.setValue(mapper(value: value), forKey: key)
-            } else {
-                object.setValue(value, forKey: key)
-
-            }
-        }
-    }
-
-    func start () {
-        animatable = to
-        (object as! UIView).layer.addSublayer(self)
     }
 
     func start(#delay: NSTimeInterval) {
-        self.delay = delay
+        self.layer.delay = delay
         start()
     }
 }
+
+extension Tween: TweenLayerDelegate {
+    func tweenLayer(layer: TweenLayer, didSetAnimatableProperty to: CGFloat) {
+        if let mapper = mapper {
+            object?.setValue(mapper(value: to), forKey: key)
+        } else {
+            object?.setValue(to, forKey: key)
+        }
+    }
+
+    func tweenLayerDidStopAnimation(layer: TweenLayer) {
+        layer.removeFromSuperlayer()
+    }
+}
+
+
