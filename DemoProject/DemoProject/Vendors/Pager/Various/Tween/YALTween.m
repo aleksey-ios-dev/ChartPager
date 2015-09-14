@@ -65,6 +65,8 @@
     } else {
         [_object setFloat:[self.presentationLayer animatable] forKey:_key];
     }
+
+    NSLog(@"print!");
 }
 
 - (void)start {

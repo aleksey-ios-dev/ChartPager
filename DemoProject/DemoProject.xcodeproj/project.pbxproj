@@ -30,6 +30,7 @@
 		5B6684331B94631A00416AC3 /* SlideLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6684261B94631A00416AC3 /* SlideLabel.swift */; };
 		5B6684351B9466EF00416AC3 /* ChartPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6684341B9466EF00416AC3 /* ChartPageControl.swift */; };
 		5B6684381B94687700416AC3 /* Objects.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B6684371B94687700416AC3 /* Objects.plist */; };
+		5B89236E1B99915900356DF5 /* Tween.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89236D1B99915900356DF5 /* Tween.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		5B6684261B94631A00416AC3 /* SlideLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideLabel.swift; sourceTree = "<group>"; };
 		5B6684341B9466EF00416AC3 /* ChartPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPageControl.swift; sourceTree = "<group>"; };
 		5B6684371B94687700416AC3 /* Objects.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Objects.plist; sourceTree = "<group>"; };
+		5B89236D1B99915900356DF5 /* Tween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tween.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 		5B6684101B94631A00416AC3 /* Tween */ = {
 			isa = PBXGroup;
 			children = (
+				5B89236D1B99915900356DF5 /* Tween.swift */,
 				5B6684111B94631A00416AC3 /* YALTween.h */,
 				5B6684121B94631A00416AC3 /* YALTween.m */,
 			);
@@ -343,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B6684351B9466EF00416AC3 /* ChartPageControl.swift in Sources */,
+				5B89236E1B99915900356DF5 /* Tween.swift in Sources */,
 				5B6684021B94606200416AC3 /* ViewController.swift in Sources */,
 				5B6683721B94529400416AC3 /* AppDelegate.swift in Sources */,
 				5B66842B1B94631A00416AC3 /* UIPageViewController+ACPageController.m in Sources */,
