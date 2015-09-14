@@ -2,8 +2,37 @@
 <module type="CIDR_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/Pager/Tween.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pager/UILabel + Animation.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/AppDelegate.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Base.lproj/LaunchScreen.xib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Base.lproj/Main.storyboard" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Categories/UIColor+HexColors.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Categories/UIColor+HexColors.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Categories/UILabel + Animation.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/DemoProject-Bridging-Header.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Images.xcassets" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Info.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Model/СhartObject.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Resources/Objects.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Categories/CAAnimationGroup + Sequence.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Categories/UIView+ACFrames.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Categories/UIView+ACFrames.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Various/Tween/Tween.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Various/Tween/TweenLayer.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Vendors/ACPageController/ACPageController.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Vendors/ACPageController/ACPageController.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Vendors/ACPageController/UIPageViewController+ACPageController.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Vendors/ACPageController/UIPageViewController+ACPageController.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Vendors/UIView+TLKAppearance/UIView+TLKAppearance.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Vendors/UIView+TLKAppearance/UIView+TLKAppearance.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/ViewController/PagingViewController/ChartPagingViewController.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/ViewController/PagingViewController/ChartPagingViewController.xib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/ViewController/Slide/ChartSlideViewController.xib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/ViewController/Slide/СhartSlideViewController.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Views/ChartPageControl.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Views/DropView.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Views/RoundChartView.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/Vendors/Pager/Views/SlideLabel.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DemoProject/ViewController/ViewController.swift" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

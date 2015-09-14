@@ -17,7 +17,6 @@
 		5B6684021B94606200416AC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6684011B94606200416AC3 /* ViewController.swift */; };
 		5B6684271B94631A00416AC3 /* CAAnimationGroup + Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B66840C1B94631A00416AC3 /* CAAnimationGroup + Sequence.swift */; };
 		5B6684281B94631A00416AC3 /* UIView+ACFrames.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66840E1B94631A00416AC3 /* UIView+ACFrames.m */; };
-		5B6684291B94631A00416AC3 /* YALTween.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6684121B94631A00416AC3 /* YALTween.m */; };
 		5B66842A1B94631A00416AC3 /* ACPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6684161B94631A00416AC3 /* ACPageController.m */; };
 		5B66842B1B94631A00416AC3 /* UIPageViewController+ACPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6684181B94631A00416AC3 /* UIPageViewController+ACPageController.m */; };
 		5B66842C1B94631A00416AC3 /* UIView+TLKAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B66841B1B94631A00416AC3 /* UIView+TLKAppearance.m */; };
@@ -30,6 +29,8 @@
 		5B6684331B94631A00416AC3 /* SlideLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6684261B94631A00416AC3 /* SlideLabel.swift */; };
 		5B6684351B9466EF00416AC3 /* ChartPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6684341B9466EF00416AC3 /* ChartPageControl.swift */; };
 		5B6684381B94687700416AC3 /* Objects.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B6684371B94687700416AC3 /* Objects.plist */; };
+		C9497A4647299AEF17888B39 /* TweenLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9497FA9D2A94CE2F66AAE8D /* TweenLayer.swift */; };
+		C9497BDEA1936BE0D6669AD3 /* Tween.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9497D230CABD9C0171CBC99 /* Tween.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,8 +49,6 @@
 		5B66840C1B94631A00416AC3 /* CAAnimationGroup + Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAAnimationGroup + Sequence.swift"; sourceTree = "<group>"; };
 		5B66840D1B94631A00416AC3 /* UIView+ACFrames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ACFrames.h"; sourceTree = "<group>"; };
 		5B66840E1B94631A00416AC3 /* UIView+ACFrames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ACFrames.m"; sourceTree = "<group>"; };
-		5B6684111B94631A00416AC3 /* YALTween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALTween.h; sourceTree = "<group>"; };
-		5B6684121B94631A00416AC3 /* YALTween.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALTween.m; sourceTree = "<group>"; };
 		5B6684151B94631A00416AC3 /* ACPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPageController.h; sourceTree = "<group>"; };
 		5B6684161B94631A00416AC3 /* ACPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACPageController.m; sourceTree = "<group>"; };
 		5B6684171B94631A00416AC3 /* UIPageViewController+ACPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPageViewController+ACPageController.h"; sourceTree = "<group>"; };
@@ -65,6 +64,8 @@
 		5B6684261B94631A00416AC3 /* SlideLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideLabel.swift; sourceTree = "<group>"; };
 		5B6684341B9466EF00416AC3 /* ChartPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPageControl.swift; sourceTree = "<group>"; };
 		5B6684371B94687700416AC3 /* Objects.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Objects.plist; sourceTree = "<group>"; };
+		C9497D230CABD9C0171CBC99 /* Tween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tween.swift; sourceTree = "<group>"; };
+		C9497FA9D2A94CE2F66AAE8D /* TweenLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,8 +189,8 @@
 		5B6684101B94631A00416AC3 /* Tween */ = {
 			isa = PBXGroup;
 			children = (
-				5B6684111B94631A00416AC3 /* YALTween.h */,
-				5B6684121B94631A00416AC3 /* YALTween.m */,
+				C9497D230CABD9C0171CBC99 /* Tween.swift */,
+				C9497FA9D2A94CE2F66AAE8D /* TweenLayer.swift */,
 			);
 			path = Tween;
 			sourceTree = "<group>";
@@ -354,11 +355,12 @@
 				5B6683FC1B94603600416AC3 /* UILabel + Animation.swift in Sources */,
 				5B66842A1B94631A00416AC3 /* ACPageController.m in Sources */,
 				5B6684301B94631A00416AC3 /* СhartSlideViewController.swift in Sources */,
-				5B6684291B94631A00416AC3 /* YALTween.m in Sources */,
 				5B6684331B94631A00416AC3 /* SlideLabel.swift in Sources */,
 				5B66842D1B94631A00416AC3 /* ChartPagingViewController.swift in Sources */,
 				5B6683FF1B94604F00416AC3 /* СhartObject.swift in Sources */,
 				5B66842C1B94631A00416AC3 /* UIView+TLKAppearance.m in Sources */,
+				C9497BDEA1936BE0D6669AD3 /* Tween.swift in Sources */,
+				C9497A4647299AEF17888B39 /* TweenLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
