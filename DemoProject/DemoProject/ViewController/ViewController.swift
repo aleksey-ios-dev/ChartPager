@@ -43,31 +43,31 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: ChartPagingViewControllerDataSource {
-    func numberOfPages() -> Int {
+    func numberOfPagesForPagingViewController(controller: ChartPagingViewController) -> Int {
         return objects.count
     }
-    
-    func colorForPage(index: Int) -> UIColor {
+
+    func chartColorForPage(index: Int, forPagingViewController: ChartPagingViewController) -> UIColor {
         return objects[index].color
     }
-    
-    func percentageForPage(index: Int) -> Int {
+
+    func percentageForPage(index: Int, forPagingViewController: ChartPagingViewController) -> Int {
         return objects[index].percentage
     }
-    
-    func titleForPage(index: Int) -> String {
+
+    func titleForPage(index: Int, forPagingViewController: ChartPagingViewController) -> String {
         return objects[index].title
     }
-    
-    func descriptionForPage(index: Int) -> String {
+
+    func descriptionForPage(index: Int, forPagingViewController: ChartPagingViewController) -> String {
         return objects[index].description
     }
-    
-    func logoForPage(index: Int) -> UIImage {
+
+    func logoForPage(index: Int, forPagingViewController: ChartPagingViewController) -> UIImage {
         return objects[index].logoImage
     }
-    
-    func chartThickness() -> CGFloat {
+
+    func chartThicknessForPagingViewController(controller: ChartPagingViewController) -> CGFloat {
         return 15
     }
 }

@@ -11,26 +11,27 @@ protocol TweenLayerDelegate: class {
 }
 
 class TweenLayer: CALayer {
-    @NSManaged private var animatable: CGFloat
+    @NSManaged private var animatableProperty: CGFloat
 
-    var tween: TweenLayerDelegate?
+    var animationDelegate: TweenLayerDelegate?
 
     var from: CGFloat = 0
     var to: CGFloat = 0
-    var tweenDuration: NSTimeInterval = 0.5
+    var tweenDuration: NSTimeInterval = 0
     var timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
     var delay: NSTimeInterval = 0
 
     override class func needsDisplayForKey(event: String) -> Bool {
-        return event == "animatable" ? true : super.needsDisplayForKey(event)
+        return event == "animatableProperty" ? true : super.needsDisplayForKey(event)
     }
 
-    override func actionForKey(event: String!) -> CAAction! {
-        if event != "animatable" {
+    override func actionForKey(event: String) -> CAAction? {
+        if event != "animatableProperty" {
             return super.actionForKey(event)
         }
+
         let animation = CABasicAnimation(keyPath: event)
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.timingFunction = timingFunction
         animation.fromValue = from
         animation.toValue = to
         animation.duration = tweenDuration
@@ -40,17 +41,17 @@ class TweenLayer: CALayer {
         return animation;
     }
 
-    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
-        tween?.tweenLayerDidStopAnimation(self)
+    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+        animationDelegate?.tweenLayerDidStopAnimation(self)
     }
 
     override func display() {
-        if let value = presentationLayer()?.animatable {
-            tween?.tweenLayer(self, didSetAnimatableProperty: value)
+        if let value = presentationLayer()?.animatableProperty {
+            animationDelegate?.tweenLayer(self, didSetAnimatableProperty: value)
         }
     }
 
     func startAnimation() {
-        animatable = to
+        animatableProperty = to
     }
 }

@@ -8,8 +8,7 @@ import Foundation
 class Tween {
     private weak var layer: TweenLayer!
 
-    private(set) var object: UIView?
-
+    let object: UIView
     let key: String
 
     var timingFunction: CAMediaTimingFunction {
@@ -33,7 +32,7 @@ class Tween {
             layer.from = from
             layer.to = to
             layer.tweenDuration = duration
-            layer.tween = self
+            layer.animationDelegate = self
 
             return layer
         }()
@@ -44,12 +43,10 @@ class Tween {
     }
 
     func start() {
-        if let object = self.object {
-            layer.startAnimation()
-        }
+        layer.startAnimation()
     }
 
-    func start(#delay: NSTimeInterval) {
+    func start(delay delay: NSTimeInterval) {
         self.layer.delay = delay
         start()
     }
@@ -58,9 +55,9 @@ class Tween {
 extension Tween: TweenLayerDelegate {
     func tweenLayer(layer: TweenLayer, didSetAnimatableProperty to: CGFloat) {
         if let mapper = mapper {
-            object?.setValue(mapper(value: to), forKey: key)
+            object.setValue(mapper(value: to), forKey: key)
         } else {
-            object?.setValue(to, forKey: key)
+            object.setValue(to, forKey: key)
         }
     }
 

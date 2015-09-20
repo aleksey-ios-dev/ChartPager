@@ -42,7 +42,7 @@ class RoundChartView : UIView {
         set {
             colorChart.strokeColor = newValue.CGColor
         } get {
-            return UIColor(CGColor:colorChart.strokeColor)!
+            return UIColor(CGColor:colorChart.strokeColor!)
         }
     }
     
@@ -62,7 +62,7 @@ class RoundChartView : UIView {
     }
     
     
-    func show(#percentage: Int, delay: NSTimeInterval) {
+    func show(percentage percentage: Int, delay: NSTimeInterval) {
         let showTime: NSTimeInterval = 0.8
     
         let colorChartShow = animation(percentage, duration: 0.6, timingFunction: easeOut)

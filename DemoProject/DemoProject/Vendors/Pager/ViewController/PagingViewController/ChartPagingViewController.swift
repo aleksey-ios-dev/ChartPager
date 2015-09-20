@@ -9,13 +9,13 @@
 import UIKit
 
 protocol ChartPagingViewControllerDataSource {
-    func numberOfPages () -> Int
-    func colorForPage(index: Int) -> UIColor
-    func percentageForPage(index: Int) -> Int
-    func titleForPage(index: Int) -> String
-    func descriptionForPage(index: Int) -> String
-    func logoForPage(index: Int) -> UIImage
-    func chartThickness () -> CGFloat
+    func numberOfPagesForPagingViewController(controller: ChartPagingViewController) -> Int
+    func chartColorForPage(index: Int, forPagingViewController controller: ChartPagingViewController) -> UIColor
+    func percentageForPage(index: Int, forPagingViewController controller: ChartPagingViewController) -> Int
+    func titleForPage(index: Int, forPagingViewController controller: ChartPagingViewController) -> String
+    func descriptionForPage(index: Int, forPagingViewController controller: ChartPagingViewController) -> String
+    func logoForPage(index: Int, forPagingViewController controller: ChartPagingViewController) -> UIImage
+    func chartThicknessForPagingViewController(controller: ChartPagingViewController) -> CGFloat
 }
 
 class ChartPagingViewController : UIViewController {
@@ -36,7 +36,7 @@ class ChartPagingViewController : UIViewController {
         
         pageViewController.view.backgroundColor = UIColor.clearColor()
         pageViewContainer.tlk_addSubview(pageViewController.view, options: TLKAppearanceOptions.Overlay)
-        pageControl.pagesCount = chartDataSource.numberOfPages()
+        pageControl.pagesCount = chartDataSource.numberOfPagesForPagingViewController(self)
         pageControl.selectButton(0)
         reloadData()
     }
@@ -50,15 +50,15 @@ class ChartPagingViewController : UIViewController {
         
         var pages: [UIViewController] = Array()
         
-        for idx in 0..<chartDataSource.numberOfPages() {
+        for idx in 0..<chartDataSource.numberOfPagesForPagingViewController(self) {
             let vc = ChartSlideViewController(nibName:"ChartSlideViewController", bundle: nil)
             let ame = vc.view.frame
-            vc.chartTitle = chartDataSource.titleForPage(idx)
-            vc.chartColor = chartDataSource.colorForPage(idx)
-            vc.chartDescription = chartDataSource.descriptionForPage(idx)
-            vc.percentage = chartDataSource.percentageForPage(idx)
-            vc.logoImage = chartDataSource.logoForPage(idx)
-            vc.chartThickness = chartDataSource.chartThickness()
+            vc.chartTitle = chartDataSource.titleForPage(idx, forPagingViewController: self)
+            vc.chartColor = chartDataSource.chartColorForPage(idx, forPagingViewController: self)
+            vc.chartDescription = chartDataSource.descriptionForPage(idx, forPagingViewController: self)
+            vc.percentage = chartDataSource.percentageForPage(idx, forPagingViewController: self)
+            vc.logoImage = chartDataSource.logoForPage(idx, forPagingViewController: self)
+            vc.chartThickness = chartDataSource.chartThicknessForPagingViewController(self)
             pages.append(vc)
 
             pageControl.selectButton(0)

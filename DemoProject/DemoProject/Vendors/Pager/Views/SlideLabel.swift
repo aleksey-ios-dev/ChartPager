@@ -42,7 +42,7 @@ class SlideLabelView: UIView {
         label.ac_trimRight(40)
     }
     
-    func animate (#delay: NSTimeInterval) {
+    func animate (delay delay: NSTimeInterval) {
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
 
         dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
