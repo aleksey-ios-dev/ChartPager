@@ -52,7 +52,7 @@ class ChartPagingViewController : UIViewController {
         
         for idx in 0..<chartDataSource.numberOfPagesForPagingViewController(self) {
             let vc = ChartSlideViewController(nibName:"ChartSlideViewController", bundle: nil)
-            let ame = vc.view.frame
+            vc.loadView()
             vc.chartTitle = chartDataSource.titleForPage(idx, forPagingViewController: self)
             vc.chartColor = chartDataSource.chartColorForPage(idx, forPagingViewController: self)
             vc.chartDescription = chartDataSource.descriptionForPage(idx, forPagingViewController: self)

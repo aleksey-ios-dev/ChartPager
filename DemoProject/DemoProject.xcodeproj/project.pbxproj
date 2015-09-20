@@ -11,7 +11,7 @@
 		5B6683771B94529400416AC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B6683751B94529400416AC3 /* Main.storyboard */; };
 		5B6683791B94529400416AC3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B6683781B94529400416AC3 /* Images.xcassets */; };
 		5B66837C1B94529400416AC3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B66837A1B94529400416AC3 /* LaunchScreen.xib */; };
-		5B6683FB1B94603600416AC3 /* UIColor+HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6683F91B94603600416AC3 /* UIColor+HexColors.m */; };
+		5B6683FB1B94603600416AC3 /* UIColor+HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6683F91B94603600416AC3 /* UIColor+HexColors.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		5B6683FC1B94603600416AC3 /* UILabel + Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6683FA1B94603600416AC3 /* UILabel + Animation.swift */; };
 		5B6683FF1B94604F00416AC3 /* СhartObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6683FE1B94604F00416AC3 /* СhartObject.swift */; };
 		5B6684021B94606200416AC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6684011B94606200416AC3 /* ViewController.swift */; };
@@ -297,7 +297,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "aleksey chernish";
 				TargetAttributes = {
 					5B66836B1B94529400416AC3 = {
@@ -408,6 +408,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -475,6 +476,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = DemoProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "YAL.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DemoProject/DemoProject-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -488,6 +490,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = DemoProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "YAL.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DemoProject/DemoProject-Bridging-Header.h";
 			};
