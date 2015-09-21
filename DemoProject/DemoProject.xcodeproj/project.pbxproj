@@ -29,7 +29,6 @@
 		5B6684331B94631A00416AC3 /* SlideLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6684261B94631A00416AC3 /* SlideLabel.swift */; };
 		5B6684351B9466EF00416AC3 /* ChartPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6684341B9466EF00416AC3 /* ChartPageControl.swift */; };
 		5B6684381B94687700416AC3 /* Objects.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B6684371B94687700416AC3 /* Objects.plist */; };
-		C9497A4647299AEF17888B39 /* TweenLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9497FA9D2A94CE2F66AAE8D /* TweenLayer.swift */; };
 		C9497BDEA1936BE0D6669AD3 /* Tween.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9497D230CABD9C0171CBC99 /* Tween.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +64,6 @@
 		5B6684341B9466EF00416AC3 /* ChartPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPageControl.swift; sourceTree = "<group>"; };
 		5B6684371B94687700416AC3 /* Objects.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Objects.plist; sourceTree = "<group>"; };
 		C9497D230CABD9C0171CBC99 /* Tween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tween.swift; sourceTree = "<group>"; };
-		C9497FA9D2A94CE2F66AAE8D /* TweenLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				C9497D230CABD9C0171CBC99 /* Tween.swift */,
-				C9497FA9D2A94CE2F66AAE8D /* TweenLayer.swift */,
 			);
 			path = Tween;
 			sourceTree = "<group>";
@@ -361,7 +358,6 @@
 				5B6683FF1B94604F00416AC3 /* СhartObject.swift in Sources */,
 				5B66842C1B94631A00416AC3 /* UIView+TLKAppearance.m in Sources */,
 				C9497BDEA1936BE0D6669AD3 /* Tween.swift in Sources */,
-				C9497A4647299AEF17888B39 /* TweenLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
