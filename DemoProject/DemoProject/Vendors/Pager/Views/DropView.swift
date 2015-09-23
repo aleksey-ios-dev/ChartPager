@@ -30,7 +30,7 @@ class DropView : UIView {
             logoImageView.tintColor = newValue
         }
         get {
-            return UIColor(CGColor: drop.fillColor)!
+            return UIColor(CGColor: drop.fillColor!)
         }
     }
     var drop: CAShapeLayer = CAShapeLayer()
@@ -49,7 +49,7 @@ class DropView : UIView {
          logoImageView.frame = CGRect(x: (bounds.width - 30.0) / 2.0, y: -chartThickness, width: 30.0, height: 30.0)
     }
     
-    func animateDrop (#delay: NSTimeInterval) {
+    func animateDrop (delay delay: NSTimeInterval) {
         self.layer.addSublayer(drop)
         
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
@@ -91,7 +91,7 @@ class DropView : UIView {
         drop.addAnimation(dropSmash, forKey: "smash")
     }
     
-    func animateLogo (#delay: NSTimeInterval) {
+    func animateLogo (delay delay: NSTimeInterval) {
         logoImageView.layer.removeAllAnimations()
         logoImageView.layer.transform = CATransform3DMakeScale(0.0, 0.0, 0.0)
         

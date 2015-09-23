@@ -14,7 +14,7 @@ extension CAAnimationGroup {
         self.init()
         self.animations = chain(sequence)
         
-        for animation in animations {
+        for animation in animations! {
             duration += animation.duration
         }
     }

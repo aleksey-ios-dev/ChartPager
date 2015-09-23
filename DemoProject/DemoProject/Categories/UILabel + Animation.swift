@@ -12,7 +12,7 @@ import UIKit
 extension UILabel {
     func animateAdding (duration: Double) {
         if let text = text {
-            iterateAdding(text, index: 0, delay: duration / Double(count(text)))
+            iterateAdding(text, index: 0, delay: duration / Double(text.characters.count))
         }
     }
     
@@ -29,7 +29,7 @@ extension UILabel {
         }
     }
     
-    func animateAlpha (#duration: Double, delay: Double) {
+    func animateAlpha (duration duration: Double, delay: Double) {
         if let text = text {
             
             let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
@@ -38,7 +38,7 @@ extension UILabel {
             
             textColor = UIColor.clearColor()
             dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
-                self.iterateAlpha(text, index: 0, delay: duration / Double(count(text)), font: self.font, color: originalFontColor)
+                self.iterateAlpha(text, index: 0, delay: duration / Double(text.characters.count), font: self.font, color: originalFontColor)
             }
         }
     }
@@ -56,13 +56,13 @@ extension UILabel {
                 
         let hideString = NSAttributedString(string: substringToHide, attributes: hideAttrs)
         
-        var result = NSMutableAttributedString()
+        let result = NSMutableAttributedString()
         result.appendAttributedString(showString)
         result.appendAttributedString(hideString)
                 
         self.attributedText = result
             
-        if (count(substringToHide) != 0) {
+        if substringToHide.characters.count != 0 {
             let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
 
             dispatch_after(time, dispatch_get_main_queue()) { () -> Void in

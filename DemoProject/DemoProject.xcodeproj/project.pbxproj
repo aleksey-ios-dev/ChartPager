@@ -11,7 +11,7 @@
 		5B6683771B94529400416AC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B6683751B94529400416AC3 /* Main.storyboard */; };
 		5B6683791B94529400416AC3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B6683781B94529400416AC3 /* Images.xcassets */; };
 		5B66837C1B94529400416AC3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B66837A1B94529400416AC3 /* LaunchScreen.xib */; };
-		5B6683FB1B94603600416AC3 /* UIColor+HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6683F91B94603600416AC3 /* UIColor+HexColors.m */; };
+		5B6683FB1B94603600416AC3 /* UIColor+HexColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6683F91B94603600416AC3 /* UIColor+HexColors.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		5B6683FC1B94603600416AC3 /* UILabel + Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6683FA1B94603600416AC3 /* UILabel + Animation.swift */; };
 		5B6683FF1B94604F00416AC3 /* СhartObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6683FE1B94604F00416AC3 /* СhartObject.swift */; };
 		5B6684021B94606200416AC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6684011B94606200416AC3 /* ViewController.swift */; };
@@ -29,7 +29,6 @@
 		5B6684331B94631A00416AC3 /* SlideLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6684261B94631A00416AC3 /* SlideLabel.swift */; };
 		5B6684351B9466EF00416AC3 /* ChartPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6684341B9466EF00416AC3 /* ChartPageControl.swift */; };
 		5B6684381B94687700416AC3 /* Objects.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B6684371B94687700416AC3 /* Objects.plist */; };
-		C9497A4647299AEF17888B39 /* TweenLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9497FA9D2A94CE2F66AAE8D /* TweenLayer.swift */; };
 		C9497BDEA1936BE0D6669AD3 /* Tween.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9497D230CABD9C0171CBC99 /* Tween.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +64,6 @@
 		5B6684341B9466EF00416AC3 /* ChartPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartPageControl.swift; sourceTree = "<group>"; };
 		5B6684371B94687700416AC3 /* Objects.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Objects.plist; sourceTree = "<group>"; };
 		C9497D230CABD9C0171CBC99 /* Tween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tween.swift; sourceTree = "<group>"; };
-		C9497FA9D2A94CE2F66AAE8D /* TweenLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweenLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				C9497D230CABD9C0171CBC99 /* Tween.swift */,
-				C9497FA9D2A94CE2F66AAE8D /* TweenLayer.swift */,
 			);
 			path = Tween;
 			sourceTree = "<group>";
@@ -296,7 +293,8 @@
 		5B6683641B94529400416AC3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "aleksey chernish";
 				TargetAttributes = {
 					5B66836B1B94529400416AC3 = {
@@ -360,7 +358,6 @@
 				5B6683FF1B94604F00416AC3 /* СhartObject.swift in Sources */,
 				5B66842C1B94631A00416AC3 /* UIView+TLKAppearance.m in Sources */,
 				C9497BDEA1936BE0D6669AD3 /* Tween.swift in Sources */,
-				C9497A4647299AEF17888B39 /* TweenLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +404,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -474,6 +472,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = DemoProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "YAL.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DemoProject/DemoProject-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -487,6 +486,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = DemoProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "YAL.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DemoProject/DemoProject-Bridging-Header.h";
 			};
