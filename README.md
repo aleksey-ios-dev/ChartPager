@@ -9,11 +9,12 @@ Check this [article on our blog](https://github.com/Yalantis/EatFit).
 
 Purpose
 --------------
-
-KolodaView is a class designed to simplify the implementation of Tinder like cards on iOS. It adds convenient functionality such as a UITableView-style dataSource/delegate interface for loading views dynamically, and efficient view loading, unloading .
+Eat fit is a component for attractive data representation inspired by Google Fit. It is based on PageViewController, interface for customization is implemented in UITableViewDataSource style.
 
 Supported OS & SDK Versions
 -----------------------------
+
+The component is implemented in Swift 2.0
 
 * Supported build target - iOS 9.0 (Xcode 7)
 
@@ -21,145 +22,76 @@ Supported OS & SDK Versions
 ARC Compatibility
 ------------------
 
-KolodaView requires ARC. 
-
-Сocoapods version
-------------------
-
-```ruby
-pod 'Koloda', '~> 2.0.1'
-```
+EatFit requires ARC. 
 
 Thread Safety
 --------------
 
-KolodaView is subclassed from UIView and - as with all UIKit components - it should only be accessed from the main thread. You may wish to use threads for loading or updating KolodaView contents or items, but always ensure that once your content has loaded, you switch back to the main thread before updating the KolodaView.
+EatFit is subclassed from UIView and - as with all UIKit components - it should only be accessed from the main thread. You may wish to use threads for loading or updating EatFit contents or items, but always ensure that once your content has loaded, you switch back to the main thread before updating the EatFit.
 
 Installation
 --------------
-To install via CocoaPods add this line to your Podfile
-```ruby
-use_frameworks!
-pod "Koloda"
-```
 
-To install manually the KolodaView class in an app, just drag the KolodaView, DraggableCardView, OverlayView class files (demo files and assets are not needed) into your project. Also you need to install facebook-pop. Or add bridging header if you are using CocoaPods.
+To install manually the EatFit component in an app, drag EatFit folder with all contents into your project. Use 
+EatFitViewController as any other view controller in your app. Setup is done via data source pattern. EatFitViewController's data source must adopt protocol EatFitViewControllerDataSource
 
+
+Memory issues
+--------------
+Inside the component pages are reused just like cells in UITableView. There are no more than 3 pages exist in memory at any moment no matter how many pages the component shows.
 
 Properties
 --------------
 
-The KolodaView has the following properties:
+The EatFit has following properties:
 ```swift
-	weak var dataSource: KolodaViewDataSource!
+	weak var dataSource: EatFitViewControllerDataSource!
 ```
-An object that supports the KolodaViewDataSource protocol and can provide views to populate the KolodaView.
-```swift
-	weak var delegate: KolodaViewDelegate?
-```
-An object that supports the KolodaViewDelegate protocol and can respond to KolodaView events.
-```swift
-    public var currentCardNumber
-```
-The index of front card in the KolodaView (read only).
-```swift
-    public var countOfCards
-```    
-The count of cards in the KolodaView (read only). To set this, implement the `kolodaNumberOfCards:` dataSource method. 
-```swift
-    var countOfVisibleCards
-```
-The count of displayed cards in the KolodaView.
-	
+
 Methods
 --------------
 
-The KolodaView class has the following methods:
+The EatFitViewController class has the following methods:
 ```swift
 	func reloadData()
 ```
 This reloads all KolodaView item views from the dataSource and refreshes the display.
-```swift
-	func revertAction()
-```	
-Applies undo animation and decrement currentCardNumber.
-```swift
-	func applyAppearAnimation()
-```
-Applies appear animation.
-```swift
-	func swipeLeft() 
-```
-Applies swipe left animation and action, increment currentCardNumber.
-```swift
-	func swipeRight()
-```
-Applies swipe right animation and action, increment currentCardNumber.
-
-```swift
-    public func frameForCardAtIndex(index: UInt) -> CGRect 
-```
-Calculates frames for cards. Useful for overriding. See example to learn more about it.
 
 Protocols
 ---------------
+The EatFitViewControllerDataSource protocol has the following methods:
+```swift
+    func numberOfPagesForPagingViewController(controller: EatFitViewController) -> Int
+```
+Returns the number of pages in the EatFit view controller.
+```swift
+    func chartColorForPage(index: Int, forPagingViewController controller: EatFitViewController) -> UIColor
+```
+Returns the tint color for specific page. Tint color defines the chart color and logo color.
+```swift
+    func percentageForPage(index: Int, forPagingViewController controller: EatFitViewController) -> Int
+```
+Returns the percentage that defines displayed value of the percentage label and the graphic chart.
+```swift
+    func titleForPage(index: Int, forPagingViewController controller: EatFitViewController) -> String
+```
+Returns the title that is displayed at the top of each page.
+```swift
+    func descriptionForPage(index: Int, forPagingViewController controller: EatFitViewController) -> String
+```
+Returns the description that is displayed at the bottom of each page.
+```swift
+    func logoForPage(index: Int, forPagingViewController controller: EatFitViewController) -> UIImage
+```
+Returns the image for specific page. Actual color of image doesn't matter, it will be colored with page tint color. Perhaps keep in mind that image must be png with opacity.
 
-The KolodaView follows the Apple convention for data-driven views by providing two protocol interfaces, KolodaViewDataSource and KolodaViewDelegate. The KolodaViewDataSource protocol has the following methods:
 ```swift
-	func kolodaNumberOfCards(koloda: KolodaView) -> UInt
+    func chartThicknessForPagingViewController(controller: EatFitViewController) -> CGFloat
 ```
-Return the number of items (views) in the KolodaView.
-```swift
-	func kolodaViewForCardAtIndex(koloda: KolodaView, index: UInt) -> UIView
-```
-Return a view to be displayed at the specified index in the KolodaView. 
-```swift
-   func kolodaViewForCardOverlayAtIndex(koloda: KolodaView, index: UInt) -> OverlayView?
-```   
-Return a view for card overlay at the specified index. For setting custom overlay action on swiping(left/right), you should override didSet of overlayState property in OverlayView. (See Example)
-
-The KolodaViewDelegate protocol has the following methods:
-```swift    
-    func kolodaDidSwipedCardAtIndex(koloda: KolodaView,index: UInt, direction: SwipeResultDirection)
-```    
-This method is called whenever the KolodaView swipes card. It is called regardless of whether the card was swiped programatically or through user interaction.
-```swift
-    func kolodaDidRunOutOfCards(koloda: KolodaView)
-```    
-This method is called when the KolodaView has no cards to display.
-```swift
-	func kolodaDidSelectCardAtIndex(koloda: KolodaView, index: UInt)
-```
-This method is called when one of cards is tapped.
-```swift
-    func kolodaShouldApplyAppearAnimation(koloda: KolodaView) -> Bool
-```
-This method is fired on reload, when any cards are displayed. If you return YES from the method, the koloda will apply appear animation.
-```swift
-    func kolodaShouldMoveBackgroundCard(koloda: KolodaView) -> Bool
-```
-This method is fired on start of front card swipping. If you return YES from the method, the koloda will move background card with dragging of front card.
-```swift
-    func kolodaShouldTransparentizeNextCard(koloda: KolodaView) -> Bool
-```
-This method is fired on koloda's layout and after swiping. If you return YES from the method, the koloda will transparentize next card below front card.
-```swift
-    func kolodaBackgroundCardAnimation(koloda: KolodaView) -> POPPropertyAnimation?
-```
-Return a pop frame animation to be applied to backround cards after swipe. This method is fired on swipping, when any cards are displayed. If you don't return frame animation, or return nil, the koloda will apply default animation.
-
+Returns chart thickness in points. It is applied for all pages.
 
 Release Notes
 ----------------
-
-Version 2.0
-
-- Swift 2.0 support
-
-Version 1.1
-
-- New delegate methods
-- Fixed minor issues
 
 Version 1.0
 
