@@ -1,4 +1,4 @@
-KolodaView
+EatFit
 --------------
 
 [![Yalantis](https://raw.githubusercontent.com/Yalantis/PullToMakeSoup/master/PullToMakeSoupDemo/Resouces/badge_dark.png)](http://Yalantis.com/?utm_source=github)
@@ -55,7 +55,7 @@ The EatFitViewController class has the following methods:
 ```swift
 	func reloadData()
 ```
-This reloads all KolodaView item views from the dataSource and refreshes the display.
+This reloads all the component from the dataSource and refreshes the display.
 
 Data source protocol
 ---------------
