@@ -57,7 +57,7 @@ The EatFitViewController class has the following methods:
 ```
 This reloads all KolodaView item views from the dataSource and refreshes the display.
 
-Protocols
+Data source protocol
 ---------------
 The EatFitViewControllerDataSource protocol has the following methods:
 ```swift
